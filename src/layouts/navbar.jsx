@@ -17,11 +17,8 @@ import { navItems } from "../App";
 const Layout = () => {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between">
-        <DesktopNav />
-        <div className="flex-grow flex justify-center">
-          <img src={logo} alt="Company Logo" className="h-10" />
-        </div>
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-center">
+        <img src={logo} alt="Company Logo" className="h-10 mx-auto" />
         <MobileNav />
         <UserMenu />
       </header>
@@ -32,22 +29,7 @@ const Layout = () => {
   );
 };
 
-const DesktopNav = () => (
-  <nav className="hidden md:flex md:items-center md:gap-5 lg:gap-6 text-lg font-medium md:text-sm">
-    <NavItem
-      to="/"
-      className="flex items-center gap-2 text-lg font-semibold md:text-base"
-    >
-      <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
-    </NavItem>
-    {navItems.map((item) => (
-      <NavItem key={item.to} to={item.to}>
-        {item.title}
-      </NavItem>
-    ))}
-  </nav>
-);
+
 
 const MobileNav = () => (
   <Sheet>
