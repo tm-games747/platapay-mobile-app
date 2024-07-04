@@ -35,7 +35,10 @@ const Sidebar = () => (
   <div className="hidden border-r bg-muted/40 md:block">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-        {/* Logo removed */}
+        <NavLink to="/" className="flex items-center gap-2 font-semibold">
+          <Package2 className="h-6 w-6" />
+          <span>Acme Inc</span>
+        </NavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
@@ -66,7 +69,7 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Platapay</span>
+          <span className="sr-only">Acme Inc</span>
         </NavLink>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
