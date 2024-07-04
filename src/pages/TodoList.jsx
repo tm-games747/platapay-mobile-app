@@ -36,7 +36,7 @@ const TodoList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Card>
+      <Card className="bg-opacity-80 bg-gray-800 text-white">
         <CardHeader>
           <CardTitle>AI-Driven Todo List</CardTitle>
         </CardHeader>
@@ -46,6 +46,7 @@ const TodoList = () => {
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
               placeholder="Enter a new todo"
+              className="bg-gray-700 text-white"
             />
             <Button onClick={addTodo}>Add Todo</Button>
             <Button onClick={generateTodo} variant="secondary">
@@ -56,12 +57,13 @@ const TodoList = () => {
             {todos.map((todo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between mb-2 p-2 border rounded"
+                className="flex items-center justify-between mb-2 p-2 border rounded bg-gray-700"
               >
                 <div className="flex items-center">
                   <Checkbox
                     checked={todo.completed}
                     onCheckedChange={() => toggleTodo(index)}
+                    className="text-white"
                   />
                   <span
                     className={`ml-2 ${todo.completed ? "line-through" : ""}`}

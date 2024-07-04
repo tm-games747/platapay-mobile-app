@@ -1,10 +1,16 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   return (
-    <div className="text-center">
-      <h1 className="text-3xl">Your Blank Canvas</h1>
-      <p>Chat with the agent to start making edits.</p>
+    <div className="flex items-center justify-center min-h-screen">
+      <Card className="bg-opacity-80 bg-gray-800 text-white">
+        <CardHeader>
+          <CardTitle className="text-3xl">Your Blank Canvas</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Chat with the agent to start making edits.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 };
