@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const Index = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <Card className="bg-opacity-80 bg-gray-800 text-white">
+      <Card className="bg-opacity-80 bg-primary text-primary-foreground">
         <CardHeader>
           <CardTitle className="text-3xl">Your Blank Canvas</CardTitle>
         </CardHeader>
