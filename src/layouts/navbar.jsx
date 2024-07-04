@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import logo from "@/public/images/logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,6 +19,9 @@ const Layout = () => {
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between">
         <DesktopNav />
+        <div className="flex-grow flex justify-center">
+          <img src={logo} alt="Company Logo" className="h-10" />
+        </div>
         <MobileNav />
         <UserMenu />
       </header>
