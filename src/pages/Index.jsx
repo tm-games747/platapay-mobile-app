@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 import newHeroImage from '../../public/images/new-hero-image.jpg';
 
 const Index = () => {
