@@ -26,6 +26,7 @@ const Layout = () => {
         <main className="flex-grow p-4 overflow-auto">
           <Outlet />
         </main>
+        <MobileFooter />
       </div>
     </div>
   );
@@ -109,6 +110,28 @@ const SidebarNavLink = ({ to, children }) => (
   >
     {children}
   </NavLink>
+);
+
+const MobileFooter = () => (
+  <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary p-2">
+    <nav className="flex justify-around items-center">
+      {navItems.map((item) => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center p-2 text-xs",
+              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+            )
+          }
+        >
+          {item.icon}
+          <span className="mt-1">{item.title}</span>
+        </NavLink>
+      ))}
+    </nav>
+  </footer>
 );
 
 export default Layout;

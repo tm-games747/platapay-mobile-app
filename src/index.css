@@ -78,3 +78,10 @@
     background-attachment: fixed;
   }
 }
+
+/* Add padding to the bottom of the main content to accommodate the mobile footer */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 4rem; /* Adjust this value based on your footer height */
+  }
+}
