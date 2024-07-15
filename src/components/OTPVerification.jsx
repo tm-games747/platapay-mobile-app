@@ -3,12 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const OTPVerification = ({ onVerify }) => {
+const OTPVerification = ({ onComplete }) => {
   const [otp, setOtp] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onVerify(otp);
+    // TODO: Implement actual OTP verification logic
+    if (otp.length === 6) {
+      onComplete();
+    } else {
+      alert('Please enter a valid 6-digit OTP');
+    }
   };
 
   return (
