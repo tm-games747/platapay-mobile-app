@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,9 +9,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from "lucide-react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -198,24 +206,32 @@ const SidebarDropdown = ({ icon, label, items }) => (
     </DropdownMenuTrigger>
     <DropdownMenuContent className="w-56">
       {items.map((item, index) => (
-        <DropdownMenu key={index}>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="w-full justify-start">
-              {item.label}
-              <ChevronDown className="ml-auto h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {item.subitems.map((subitem, subIndex) => (
-              <DropdownMenuItem key={subIndex} asChild>
-                <NavLink to={subitem.to}>{subitem.label}</NavLink>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <SubmenuDialog key={index} item={item} />
       ))}
     </DropdownMenuContent>
   </DropdownMenu>
+);
+
+const SubmenuDialog = ({ item }) => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button variant="ghost" className="w-full justify-start">
+        {item.label}
+      </Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>{item.label}</DialogTitle>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        {item.subitems.map((subitem, subIndex) => (
+          <Button key={subIndex} asChild variant="ghost">
+            <Link to={subitem.to}>{subitem.label}</Link>
+          </Button>
+        ))}
+      </div>
+    </DialogContent>
+  </Dialog>
 );
 
 const MobileSidebarDropdown = ({ icon, label, items }) => (
@@ -225,20 +241,31 @@ const MobileSidebarDropdown = ({ icon, label, items }) => (
       {label}
     </div>
     {items.map((item, index) => (
-      <div key={index} className="ml-6 space-y-1">
-        <div className="font-medium">{item.label}</div>
-        {item.subitems.map((subitem, subIndex) => (
-          <NavLink
-            key={subIndex}
-            to={subitem.to}
-            className="block py-1 text-sm text-gray-600 hover:text-primary"
-          >
-            {subitem.label}
-          </NavLink>
-        ))}
-      </div>
+      <MobileSubmenuDialog key={index} item={item} />
     ))}
   </div>
+);
+
+const MobileSubmenuDialog = ({ item }) => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button variant="ghost" className="w-full justify-start text-sm">
+        {item.label}
+      </Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>{item.label}</DialogTitle>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        {item.subitems.map((subitem, subIndex) => (
+          <Button key={subIndex} asChild variant="ghost">
+            <Link to={subitem.to}>{subitem.label}</Link>
+          </Button>
+        ))}
+      </div>
+    </DialogContent>
+  </Dialog>
 );
 
 const MobileFooter = () => (
