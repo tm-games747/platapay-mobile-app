@@ -12,6 +12,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 // Mock API function to fetch balance
 const fetchBalance = async () => {
@@ -27,6 +34,8 @@ const EWallet = () => {
   });
   
   const [topUpAmount, setTopUpAmount] = useState('');
+  const [paymentOption, setPaymentOption] = useState('');
+  const [paymentAmount, setPaymentAmount] = useState('');
 
   const sampleTransactions = [
     { date: '2023-03-15', description: 'Top-up', amount: 5000 },
@@ -40,8 +49,10 @@ const EWallet = () => {
     // TODO: Implement actual top-up logic
   };
 
-  const handleCashOut = () => {
-    console.log('Cash-out functionality to be implemented');
+  const handlePayment = () => {
+    console.log('Payment option:', paymentOption);
+    console.log('Payment amount:', paymentAmount);
+    // TODO: Implement actual payment logic
   };
 
   if (isLoading) return <div>Loading balance...</div>;
@@ -84,7 +95,45 @@ const EWallet = () => {
             <Button onClick={handleTopUp}>Confirm Top-Up</Button>
           </DialogContent>
         </Dialog>
-        <Button onClick={handleCashOut} variant="secondary" className="flex-1">Cash-Out</Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="secondary" className="flex-1">Pay</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Make a Payment</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="paymentOption" className="text-right">
+                  Payment Option
+                </Label>
+                <Select onValueChange={setPaymentOption} value={paymentOption}>
+                  <SelectTrigger className="col-span-3">
+                    <SelectValue placeholder="Select payment option" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="bills">Pay Bills</SelectItem>
+                    <SelectItem value="transfer">Transfer Money</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="paymentAmount" className="text-right">
+                  Amount
+                </Label>
+                <Input
+                  id="paymentAmount"
+                  type="number"
+                  className="col-span-3"
+                  value={paymentAmount}
+                  onChange={(e) => setPaymentAmount(e.target.value)}
+                />
+              </div>
+            </div>
+            <Button onClick={handlePayment}>Confirm Payment</Button>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <Card>
