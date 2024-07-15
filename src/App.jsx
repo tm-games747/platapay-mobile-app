@@ -15,6 +15,7 @@ import KYCVerification from "./components/KYCVerification.jsx";
 import CreateAccountScreen from "./pages/CreateAccountScreen.jsx";
 import PersonalInformationForm from "./components/PersonalInformationForm.jsx";
 import HomeAddressForm from "./components/HomeAddressForm.jsx";
+import MPINNomination from "./pages/MPINNomination.jsx";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => {
               <Route path="create-account" element={<CreateAccountScreen />} />
               <Route path="personal-information" element={<PersonalInformationForm />} />
               <Route path="home-address" element={<HomeAddressForm />} />
+              <Route path="mpin-nomination" element={<MPINNomination />} />
             </Route>
           </Routes>
         </Router>
