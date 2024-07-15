@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers } from "lucide-react";
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -55,7 +55,37 @@ const Sidebar = () => (
           <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
           <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
           <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
-          <SidebarNavLink to="/requested-screens" icon={<Layers className="h-6 w-6" />}>Requested Screens</SidebarNavLink>
+          <SidebarDropdown
+            icon={<Layers className="h-6 w-6" />}
+            label="Requested Screens"
+            items={[
+              {
+                label: "Account Registration",
+                subitems: [
+                  { to: "/create-account", label: "Create Account" },
+                  { to: "/personal-information", label: "Personal Information" },
+                  { to: "/home-address", label: "Home Address" },
+                  { to: "/mpin-nomination", label: "MPIN Nomination" },
+                  { to: "/otp-verification", label: "OTP Verification" },
+                  { to: "/registration-success", label: "Registration Success" },
+                ],
+              },
+              {
+                label: "KYC Verification",
+                subitems: [
+                  { to: "/capture-signature", label: "Capture Specimen Signature" },
+                  { to: "/capture-valid-id", label: "Capture Valid ID" },
+                  { to: "/capture-five-angle-selfie", label: "Capture Five Angle Selfie" },
+                ],
+              },
+              {
+                label: "Account Management",
+                subitems: [
+                  { to: "/verify-account", label: "Account Verification Overview" },
+                ],
+              },
+            ]}
+          />
         </nav>
       </div>
     </div>
@@ -84,7 +114,37 @@ const MobileSidebar = () => (
         <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
         <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
         <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
-        <SidebarNavLink to="/requested-screens" icon={<Layers className="h-6 w-6" />}>Requested Screens</SidebarNavLink>
+        <MobileSidebarDropdown
+          icon={<Layers className="h-6 w-6" />}
+          label="Requested Screens"
+          items={[
+            {
+              label: "Account Registration",
+              subitems: [
+                { to: "/create-account", label: "Create Account" },
+                { to: "/personal-information", label: "Personal Information" },
+                { to: "/home-address", label: "Home Address" },
+                { to: "/mpin-nomination", label: "MPIN Nomination" },
+                { to: "/otp-verification", label: "OTP Verification" },
+                { to: "/registration-success", label: "Registration Success" },
+              ],
+            },
+            {
+              label: "KYC Verification",
+              subitems: [
+                { to: "/capture-signature", label: "Capture Specimen Signature" },
+                { to: "/capture-valid-id", label: "Capture Valid ID" },
+                { to: "/capture-five-angle-selfie", label: "Capture Five Angle Selfie" },
+              ],
+            },
+            {
+              label: "Account Management",
+              subitems: [
+                { to: "/verify-account", label: "Account Verification Overview" },
+              ],
+            },
+          ]}
+        />
       </nav>
     </SheetContent>
   </Sheet>
@@ -125,6 +185,60 @@ const SidebarNavLink = ({ to, icon, children }) => (
     {icon}
     {children}
   </NavLink>
+);
+
+const SidebarDropdown = ({ icon, label, items }) => (
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="ghost" className="w-full justify-start gap-3 font-semibold">
+        {icon}
+        {label}
+        <ChevronDown className="ml-auto h-4 w-4" />
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56">
+      {items.map((item, index) => (
+        <DropdownMenu key={index}>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="w-full justify-start">
+              {item.label}
+              <ChevronDown className="ml-auto h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {item.subitems.map((subitem, subIndex) => (
+              <DropdownMenuItem key={subIndex} asChild>
+                <NavLink to={subitem.to}>{subitem.label}</NavLink>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ))}
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+
+const MobileSidebarDropdown = ({ icon, label, items }) => (
+  <div className="space-y-2">
+    <div className="flex items-center gap-3 font-semibold">
+      {icon}
+      {label}
+    </div>
+    {items.map((item, index) => (
+      <div key={index} className="ml-6 space-y-1">
+        <div className="font-medium">{item.label}</div>
+        {item.subitems.map((subitem, subIndex) => (
+          <NavLink
+            key={subIndex}
+            to={subitem.to}
+            className="block py-1 text-sm text-gray-600 hover:text-primary"
+          >
+            {subitem.label}
+          </NavLink>
+        ))}
+      </div>
+    ))}
+  </div>
 );
 
 const MobileFooter = () => (
