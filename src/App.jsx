@@ -1,13 +1,14 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, List, Wallet, UserPlus } from "lucide-react";
+import { Home, List, Wallet, UserPlus, LogIn } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar"; // Use the sidebar layout
 import Index from "./pages/Index.jsx";
 import TodoList from "./pages/TodoList.jsx";
 import EWallet from "./pages/EWallet.jsx";
-import UserRegistration from "./pages/UserRegistration.jsx"; // Import the new UserRegistration page
+import UserRegistration from "./pages/UserRegistration.jsx";
+import UserLogin from "./pages/UserLogin.jsx"; // Import the new UserLogin page
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,11 @@ export const navItems = [
     to: "/register",
     icon: <UserPlus className="h-6 w-6" />,
   },
+  {
+    title: "Login",
+    to: "/login",
+    icon: <LogIn className="h-6 w-6" />,
+  },
 ];
 
 const App = () => {
@@ -46,6 +52,7 @@ const App = () => {
               <Route path="todo" element={<TodoList />} />
               <Route path="wallet" element={<EWallet />} />
               <Route path="register" element={<UserRegistration />} />
+              <Route path="login" element={<UserLogin />} />
             </Route>
           </Routes>
         </Router>
