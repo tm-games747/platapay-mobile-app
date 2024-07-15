@@ -21,6 +21,7 @@ import RegistrationSuccessScreen from "./pages/RegistrationSuccessScreen.jsx";
 import CaptureSpecimenSignature from "./pages/CaptureSpecimenSignature.jsx";
 import CaptureValidIDScreen from "./pages/CaptureValidIDScreen.jsx";
 import CaptureFiveAngleSelfie from "./pages/CaptureFiveAngleSelfie.jsx";
+import AccountVerificationOverview from "./pages/AccountVerificationOverview.jsx";
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,7 @@ const App = () => {
               <Route path="capture-signature" element={<CaptureSpecimenSignature />} />
               <Route path="capture-valid-id" element={<CaptureValidIDScreen />} />
               <Route path="capture-five-angle-selfie" element={<CaptureFiveAngleSelfie />} />
+              <Route path="verify-account" element={<AccountVerificationOverview />} />
             </Route>
           </Routes>
         </Router>
