@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, Wallet, QrCode, History, HelpCircle } from "lucide-react";
+import { Home, Wallet, QrCode, History, HelpCircle, Layers } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar";
 import Index from "./pages/Index.jsx";
@@ -22,6 +22,7 @@ import CaptureSpecimenSignature from "./pages/CaptureSpecimenSignature.jsx";
 import CaptureValidIDScreen from "./pages/CaptureValidIDScreen.jsx";
 import CaptureFiveAngleSelfie from "./pages/CaptureFiveAngleSelfie.jsx";
 import AccountVerificationOverview from "./pages/AccountVerificationOverview.jsx";
+import RequestedScreens from "./pages/RequestedScreens.jsx";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,11 @@ export const navItems = [
     to: "/help-support",
     icon: <HelpCircle className="h-6 w-6" />,
   },
+  {
+    title: "Requested Screens",
+    to: "/requested-screens",
+    icon: <Layers className="h-6 w-6" />,
+  },
 ];
 
 const App = () => {
@@ -79,6 +85,7 @@ const App = () => {
               <Route path="capture-valid-id" element={<CaptureValidIDScreen />} />
               <Route path="capture-five-angle-selfie" element={<CaptureFiveAngleSelfie />} />
               <Route path="verify-account" element={<AccountVerificationOverview />} />
+              <Route path="requested-screens" element={<RequestedScreens />} />
             </Route>
           </Routes>
         </Router>

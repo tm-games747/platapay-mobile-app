@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell } from "lucide-react";
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -55,6 +55,7 @@ const Sidebar = () => (
           <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
           <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
           <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
+          <SidebarNavLink to="/requested-screens" icon={<Layers className="h-6 w-6" />}>Requested Screens</SidebarNavLink>
         </nav>
       </div>
     </div>
@@ -83,6 +84,7 @@ const MobileSidebar = () => (
         <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
         <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
         <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
+        <SidebarNavLink to="/requested-screens" icon={<Layers className="h-6 w-6" />}>Requested Screens</SidebarNavLink>
       </nav>
     </SheetContent>
   </Sheet>
