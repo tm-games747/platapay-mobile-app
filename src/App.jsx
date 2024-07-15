@@ -1,12 +1,13 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, List, Wallet } from "lucide-react";
+import { Home, List, Wallet, UserPlus } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar"; // Use the sidebar layout
 import Index from "./pages/Index.jsx";
 import TodoList from "./pages/TodoList.jsx";
-import EWallet from "./pages/EWallet.jsx"; // Import the new EWallet page
+import EWallet from "./pages/EWallet.jsx";
+import UserRegistration from "./pages/UserRegistration.jsx"; // Import the new UserRegistration page
 
 const queryClient = new QueryClient();
 
@@ -22,9 +23,14 @@ export const navItems = [
     icon: <List className="h-6 w-6" />,
   },
   {
-    title: "E-Wallet", // New navigation item for E-Wallet
+    title: "E-Wallet",
     to: "/wallet",
     icon: <Wallet className="h-6 w-6" />,
+  },
+  {
+    title: "Register",
+    to: "/register",
+    icon: <UserPlus className="h-6 w-6" />,
   },
 ];
 
@@ -38,7 +44,8 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
               <Route path="todo" element={<TodoList />} />
-              <Route path="wallet" element={<EWallet />} /> {/* Add the new route */}
+              <Route path="wallet" element={<EWallet />} />
+              <Route path="register" element={<UserRegistration />} />
             </Route>
           </Routes>
         </Router>
