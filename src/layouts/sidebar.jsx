@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Package2, HelpCircle } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -115,7 +115,7 @@ const SidebarNavLink = ({ to, children }) => (
 const MobileFooter = () => (
   <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary p-2">
     <nav className="flex justify-around items-center">
-      {navItems.map((item) => (
+      {navItems.slice(0, 4).map((item) => (
         <NavLink
           key={item.to}
           to={item.to}
@@ -130,6 +130,18 @@ const MobileFooter = () => (
           <span className="mt-1">{item.title}</span>
         </NavLink>
       ))}
+      <NavLink
+        to="/help-support"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center p-2 text-xs",
+            isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+          )
+        }
+      >
+        <HelpCircle className="h-6 w-6" />
+        <span className="mt-1">Help</span>
+      </NavLink>
     </nav>
   </footer>
 );
