@@ -1,14 +1,15 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, List, Wallet, UserPlus, LogIn } from "lucide-react";
+import { Home, List, Wallet, UserPlus, LogIn, History } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Layout from "./layouts/sidebar"; // Use the sidebar layout
+import Layout from "./layouts/sidebar";
 import Index from "./pages/Index.jsx";
 import TodoList from "./pages/TodoList.jsx";
 import EWallet from "./pages/EWallet.jsx";
 import UserRegistration from "./pages/UserRegistration.jsx";
-import UserLogin from "./pages/UserLogin.jsx"; // Import the new UserLogin page
+import UserLogin from "./pages/UserLogin.jsx";
+import TransactionHistory from "./pages/TransactionHistory.jsx";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,11 @@ export const navItems = [
     title: "E-Wallet",
     to: "/wallet",
     icon: <Wallet className="h-6 w-6" />,
+  },
+  {
+    title: "Transaction History",
+    to: "/history",
+    icon: <History className="h-6 w-6" />,
   },
   {
     title: "Register",
@@ -51,6 +57,7 @@ const App = () => {
               <Route index element={<Index />} />
               <Route path="todo" element={<TodoList />} />
               <Route path="wallet" element={<EWallet />} />
+              <Route path="history" element={<TransactionHistory />} />
               <Route path="register" element={<UserRegistration />} />
               <Route path="login" element={<UserLogin />} />
             </Route>
