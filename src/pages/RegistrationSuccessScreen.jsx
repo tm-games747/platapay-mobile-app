@@ -21,9 +21,9 @@ const RegistrationSuccessScreen = () => {
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold mb-4">Registration Successful!</h2>
-          <p className="mb-6">Your account has been successfully created.</p>
+          <p className="mb-6">Your application is now under review. We'll notify you once it's approved.</p>
           <Button onClick={handleContinue} className="w-full">
-            Continue to Home
+            Go to Home Screen
           </Button>
         </CardContent>
       </Card>
