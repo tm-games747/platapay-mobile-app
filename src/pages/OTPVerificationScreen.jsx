@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,13 @@ import { toast } from "sonner";
 
 const OTPVerificationScreen = () => {
   const [otp, setOtp] = useState('');
+  const [countdown, setCountdown] = useState(30);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = countdown > 0 && setInterval(() => setCountdown(countdown - 1), 1000);
+    return () => clearInterval(timer);
+  }, [countdown]);
 
   const handleOtpChange = (e) => {
     const value = e.target.value.replace(/\D/g, '');
@@ -28,6 +34,13 @@ const OTPVerificationScreen = () => {
     navigate('/');
   };
 
+  const handleResendOTP = () => {
+    // Placeholder for resend OTP logic
+    console.log("Resending OTP");
+    setCountdown(30);
+    toast.success("OTP resent successfully");
+  };
+
   return (
     <div className="container mx-auto p-4">
       <Card className="max-w-md mx-auto">
@@ -36,6 +49,9 @@ const OTPVerificationScreen = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Please enter the 6-digit code sent to your registered mobile number.
+            </p>
             <div>
               <Input
                 type="text"
@@ -47,6 +63,13 @@ const OTPVerificationScreen = () => {
               />
             </div>
             <Button type="submit" className="w-full">Verify OTP</Button>
+            <div className="text-center">
+              {countdown > 0 ? (
+                <p className="text-sm text-muted-foreground">Resend OTP in {countdown} seconds</p>
+              ) : (
+                <Button variant="link" onClick={handleResendOTP}>Resend OTP</Button>
+              )}
+            </div>
           </form>
         </CardContent>
       </Card>
