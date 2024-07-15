@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, HelpCircle, QrCode } from "lucide-react";
+import { CircleUser, Menu, Package2, HelpCircle } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -139,7 +139,7 @@ const MobileFooter = () => (
             )
           }
         >
-          <QrCode className="h-8 w-8" />
+          {navItems.find(item => item.to === "/qrcode").icon}
         </NavLink>
         {navItems.slice(2, 4).map((item) => (
           <NavLink
