@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useQuery } from '@tanstack/react-query';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 // Mock API function to fetch balance
 const fetchBalance = async () => {
@@ -17,6 +26,8 @@ const EWallet = () => {
     queryFn: fetchBalance
   });
   
+  const [topUpAmount, setTopUpAmount] = useState('');
+
   const sampleTransactions = [
     { date: '2023-03-15', description: 'Top-up', amount: 5000 },
     { date: '2023-03-14', description: 'Payment for groceries', amount: -1500 },
@@ -25,7 +36,8 @@ const EWallet = () => {
   ];
 
   const handleTopUp = () => {
-    console.log('Top-up functionality to be implemented');
+    console.log('Top-up amount:', topUpAmount);
+    // TODO: Implement actual top-up logic
   };
 
   const handleCashOut = () => {
@@ -47,7 +59,31 @@ const EWallet = () => {
       </Card>
 
       <div className="flex gap-4">
-        <Button onClick={handleTopUp} className="flex-1">Top-Up</Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="flex-1">Top-Up</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Top-Up Your Wallet</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="amount" className="text-right">
+                  Amount
+                </Label>
+                <Input
+                  id="amount"
+                  type="number"
+                  className="col-span-3"
+                  value={topUpAmount}
+                  onChange={(e) => setTopUpAmount(e.target.value)}
+                />
+              </div>
+            </div>
+            <Button onClick={handleTopUp}>Confirm Top-Up</Button>
+          </DialogContent>
+        </Dialog>
         <Button onClick={handleCashOut} variant="secondary" className="flex-1">Cash-Out</Button>
       </div>
 
