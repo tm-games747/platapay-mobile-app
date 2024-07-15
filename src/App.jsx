@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, QrCode, Wallet, UserPlus, LogIn, History, HelpCircle, UserCheck } from "lucide-react";
+import { Home, Wallet, QrCode, History, HelpCircle } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar";
 import Index from "./pages/Index.jsx";
@@ -22,14 +22,14 @@ export const navItems = [
     icon: <Home className="h-6 w-6" />,
   },
   {
-    title: "QR Code",
-    to: "/qrcode",
-    icon: <QrCode className="h-6 w-6" />,
-  },
-  {
     title: "E-Wallet",
     to: "/wallet",
     icon: <Wallet className="h-6 w-6" />,
+  },
+  {
+    title: "QR Code",
+    to: "/qrcode",
+    icon: <QrCode className="h-6 w-6" />,
   },
   {
     title: "Transaction History",
@@ -37,24 +37,9 @@ export const navItems = [
     icon: <History className="h-6 w-6" />,
   },
   {
-    title: "Register",
-    to: "/register",
-    icon: <UserPlus className="h-6 w-6" />,
-  },
-  {
-    title: "Login",
-    to: "/login",
-    icon: <LogIn className="h-6 w-6" />,
-  },
-  {
     title: "Help & Support",
     to: "/help-support",
     icon: <HelpCircle className="h-6 w-6" />,
-  },
-  {
-    title: "KYC Verification",
-    to: "/kyc-verification",
-    icon: <UserCheck className="h-6 w-6" />,
   },
 ];
 
