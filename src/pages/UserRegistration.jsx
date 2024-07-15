@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import RegistrationForm from '@/components/RegistrationForm';
 import OTPVerification from '@/components/OTPVerification';
-import SuccessScreen from '@/components/SuccessScreen';
 import { useNavigate } from 'react-router-dom';
 
 const UserRegistration = () => {
@@ -19,11 +18,7 @@ const UserRegistration = () => {
   const handleOTPVerify = (otp) => {
     console.log('OTP entered:', otp);
     // TODO: Implement API call to verify OTP
-    setRegistrationStep('success');
-  };
-
-  const handleContinue = () => {
-    navigate('/'); // Navigate to home page or dashboard
+    navigate('/registration-success');
   };
 
   const renderStep = () => {
@@ -32,8 +27,6 @@ const UserRegistration = () => {
         return <RegistrationForm onSubmit={handleRegistrationSubmit} />;
       case 'otp':
         return <OTPVerification onVerify={handleOTPVerify} />;
-      case 'success':
-        return <SuccessScreen onContinue={handleContinue} />;
       default:
         return null;
     }
