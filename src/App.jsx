@@ -18,6 +18,7 @@ import HomeAddressForm from "./components/HomeAddressForm.jsx";
 import MPINNomination from "./pages/MPINNomination.jsx";
 import OTPVerificationScreen from "./pages/OTPVerificationScreen.jsx";
 import RegistrationSuccessScreen from "./pages/RegistrationSuccessScreen.jsx";
+import CaptureSpecimenSignature from "./pages/CaptureSpecimenSignature.jsx";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => {
               <Route path="mpin-nomination" element={<MPINNomination />} />
               <Route path="otp-verification" element={<OTPVerificationScreen />} />
               <Route path="registration-success" element={<RegistrationSuccessScreen />} />
+              <Route path="capture-signature" element={<CaptureSpecimenSignature />} />
             </Route>
           </Routes>
         </Router>
