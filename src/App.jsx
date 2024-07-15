@@ -23,6 +23,7 @@ import CaptureValidIDScreen from "./pages/CaptureValidIDScreen.jsx";
 import CaptureFiveAngleSelfie from "./pages/CaptureFiveAngleSelfie.jsx";
 import AccountVerificationOverview from "./pages/AccountVerificationOverview.jsx";
 import RequestedScreens from "./pages/RequestedScreens.jsx";
+import { ThemeProvider } from "./components/theme-provider";
 
 const queryClient = new QueryClient();
 
@@ -62,34 +63,36 @@ export const navItems = [
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="qrcode" element={<QRCodeGenerator />} />
-              <Route path="wallet" element={<EWallet />} />
-              <Route path="history" element={<TransactionHistory />} />
-              <Route path="register" element={<UserRegistration />} />
-              <Route path="login" element={<UserLogin />} />
-              <Route path="help-support" element={<HelpSupport />} />
-              <Route path="kyc-verification" element={<KYCVerification />} />
-              <Route path="create-account" element={<CreateAccountScreen />} />
-              <Route path="personal-information" element={<PersonalInformationForm />} />
-              <Route path="home-address" element={<HomeAddressForm />} />
-              <Route path="mpin-nomination" element={<MPINNomination />} />
-              <Route path="otp-verification" element={<OTPVerificationScreen />} />
-              <Route path="registration-success" element={<RegistrationSuccessScreen />} />
-              <Route path="capture-signature" element={<CaptureSpecimenSignature />} />
-              <Route path="capture-valid-id" element={<CaptureValidIDScreen />} />
-              <Route path="capture-five-angle-selfie" element={<CaptureFiveAngleSelfie />} />
-              <Route path="verify-account" element={<AccountVerificationOverview />} />
-              <Route path="requested-screens" element={<RequestedScreens />} />
-            </Route>
-          </Routes>
-        </Router>
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Index />} />
+                <Route path="qrcode" element={<QRCodeGenerator />} />
+                <Route path="wallet" element={<EWallet />} />
+                <Route path="history" element={<TransactionHistory />} />
+                <Route path="register" element={<UserRegistration />} />
+                <Route path="login" element={<UserLogin />} />
+                <Route path="help-support" element={<HelpSupport />} />
+                <Route path="kyc-verification" element={<KYCVerification />} />
+                <Route path="create-account" element={<CreateAccountScreen />} />
+                <Route path="personal-information" element={<PersonalInformationForm />} />
+                <Route path="home-address" element={<HomeAddressForm />} />
+                <Route path="mpin-nomination" element={<MPINNomination />} />
+                <Route path="otp-verification" element={<OTPVerificationScreen />} />
+                <Route path="registration-success" element={<RegistrationSuccessScreen />} />
+                <Route path="capture-signature" element={<CaptureSpecimenSignature />} />
+                <Route path="capture-valid-id" element={<CaptureValidIDScreen />} />
+                <Route path="capture-five-angle-selfie" element={<CaptureFiveAngleSelfie />} />
+                <Route path="verify-account" element={<AccountVerificationOverview />} />
+                <Route path="requested-screens" element={<RequestedScreens />} />
+              </Route>
+            </Routes>
+          </Router>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
