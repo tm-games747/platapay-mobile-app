@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, HelpCircle, Wallet } from "lucide-react";
+import { CircleUser, Menu, Package2, HelpCircle, Wallet, QrCode, History, Home } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -116,22 +116,30 @@ const MobileFooter = () => (
   <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary p-2">
     <nav className="flex justify-around items-center">
       <div className="flex justify-between items-center w-full">
-        {navItems.slice(0, 2).map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) =>
-              cn(
-                "flex flex-col items-center p-2",
-                isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-              )
-            }
-          >
-            {item.icon}
-          </NavLink>
-        ))}
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center p-2",
+              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+            )
+          }
+        >
+          <Home className="h-6 w-6" />
+        </NavLink>
         <NavLink
           to="/wallet"
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center p-2",
+              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+            )
+          }
+        >
+          <Wallet className="h-6 w-6" />
+        </NavLink>
+        <NavLink
+          to="/qrcode"
           className={({ isActive }) =>
             cn(
               "flex flex-col items-center justify-center p-2 -mt-8 bg-primary rounded-full border-4 border-background",
@@ -139,22 +147,19 @@ const MobileFooter = () => (
             )
           }
         >
-          <Wallet className="h-6 w-6" />
+          <QrCode className="h-6 w-6" />
         </NavLink>
-        {navItems.slice(2, 4).map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) =>
-              cn(
-                "flex flex-col items-center p-2",
-                isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-              )
-            }
-          >
-            {item.icon}
-          </NavLink>
-        ))}
+        <NavLink
+          to="/history"
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center p-2",
+              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+            )
+          }
+        >
+          <History className="h-6 w-6" />
+        </NavLink>
         <NavLink
           to="/help-support"
           className={({ isActive }) =>
