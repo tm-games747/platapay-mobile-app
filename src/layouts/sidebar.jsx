@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, HelpCircle } from "lucide-react";
+import { CircleUser, Menu, Package2, HelpCircle, Wallet } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -40,7 +40,7 @@ const Sidebar = () => (
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
+          {navItems.filter(item => item.to !== "/wallet").map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
               {item.title}
@@ -69,7 +69,7 @@ const MobileSidebar = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Platapay</span>
         </NavLink>
-        {navItems.map((item) => (
+        {navItems.filter(item => item.to !== "/wallet").map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
             {item.title}
           </SidebarNavLink>
@@ -131,7 +131,7 @@ const MobileFooter = () => (
           </NavLink>
         ))}
         <NavLink
-          to="/qrcode"
+          to="/wallet"
           className={({ isActive }) =>
             cn(
               "flex flex-col items-center justify-center p-2 -mt-8 bg-primary rounded-full border-4 border-background",
@@ -139,7 +139,7 @@ const MobileFooter = () => (
             )
           }
         >
-          {navItems.find(item => item.to === "/qrcode").icon}
+          <Wallet className="h-6 w-6" />
         </NavLink>
         {navItems.slice(2, 4).map((item) => (
           <NavLink
