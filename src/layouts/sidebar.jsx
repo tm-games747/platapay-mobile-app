@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, HelpCircle, Wallet, QrCode, History, Home } from "lucide-react";
+import { CircleUser, Menu } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -39,12 +39,12 @@ const Sidebar = () => (
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
-          <Package2 className="h-6 w-6" />
-          <span>PlataPay</span>
+          <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8" />
+          <span className="text-xl font-bold text-primary">PlataPay</span>
         </NavLink>
       </div>
       <div className="flex-1">
-        <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
+        <nav className="grid items-start px-2 text-base font-medium lg:px-4 gap-2">
           {navItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
@@ -71,7 +71,7 @@ const MobileSidebar = () => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
-          <Package2 className="h-6 w-6" />
+          <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8" />
           <span>PlataPay</span>
         </NavLink>
         {navItems.map((item) => (
@@ -110,8 +110,10 @@ const SidebarNavLink = ({ to, children }) => (
     to={to}
     className={({ isActive }) =>
       cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
-        isActive ? "text-primary bg-primary/10" : "text-muted-foreground"
+        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all text-base font-semibold",
+        isActive
+          ? "text-primary bg-primary/10"
+          : "text-gray-700 hover:text-primary hover:bg-primary/5"
       )
     }
   >
@@ -122,66 +124,21 @@ const SidebarNavLink = ({ to, children }) => (
 const MobileFooter = () => (
   <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t p-2">
     <nav className="flex justify-around items-center">
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center p-2",
-            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
-          )
-        }
-      >
-        <Home className="h-6 w-6" />
-        <span className="text-xs">Home</span>
-      </NavLink>
-      <NavLink
-        to="/wallet"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center p-2",
-            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
-          )
-        }
-      >
-        <Wallet className="h-6 w-6" />
-        <span className="text-xs">Wallet</span>
-      </NavLink>
-      <NavLink
-        to="/qrcode"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center justify-center p-2 -mt-4 bg-primary text-primary-foreground rounded-full shadow-lg",
-            isActive ? "bg-primary-dark" : ""
-          )
-        }
-      >
-        <QrCode className="h-6 w-6" />
-        <span className="text-xs">QR Code</span>
-      </NavLink>
-      <NavLink
-        to="/history"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center p-2",
-            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
-          )
-        }
-      >
-        <History className="h-6 w-6" />
-        <span className="text-xs">History</span>
-      </NavLink>
-      <NavLink
-        to="/help-support"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center p-2",
-            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
-          )
-        }
-      >
-        <HelpCircle className="h-6 w-6" />
-        <span className="text-xs">Help</span>
-      </NavLink>
+      {navItems.slice(0, 5).map((item) => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center p-2",
+              isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
+            )
+          }
+        >
+          {item.icon}
+          <span className="text-xs">{item.title}</span>
+        </NavLink>
+      ))}
     </nav>
   </footer>
 );
