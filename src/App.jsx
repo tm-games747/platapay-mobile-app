@@ -5,7 +5,7 @@ import { Home, Wallet, QrCode, History, HelpCircle } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar";
 import Index from "./pages/Index.jsx";
-import QRCodeGenerator from "./pages/TodoList.jsx";
+import QRCodeGenerator from "./pages/QRCodeGenerator.jsx";
 import EWallet from "./pages/EWallet.jsx";
 import UserRegistration from "./pages/UserRegistration.jsx";
 import UserLogin from "./pages/UserLogin.jsx";
