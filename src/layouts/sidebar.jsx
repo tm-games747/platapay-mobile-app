@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, HelpCircle } from "lucide-react";
+import { CircleUser, Menu, Package2, HelpCircle, QrCode } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -115,10 +115,48 @@ const SidebarNavLink = ({ to, children }) => (
 const MobileFooter = () => (
   <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary p-2">
     <nav className="flex justify-around items-center">
-      {navItems.slice(0, 4).map((item) => (
+      <div className="flex justify-between items-center w-full">
+        {navItems.slice(0, 2).map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) =>
+              cn(
+                "flex flex-col items-center p-2",
+                isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+              )
+            }
+          >
+            {item.icon}
+          </NavLink>
+        ))}
         <NavLink
-          key={item.to}
-          to={item.to}
+          to="/qrcode"
+          className={({ isActive }) =>
+            cn(
+              "flex flex-col items-center justify-center p-2 -mt-8 bg-primary rounded-full border-4 border-background",
+              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+            )
+          }
+        >
+          <QrCode className="h-8 w-8" />
+        </NavLink>
+        {navItems.slice(2, 4).map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) =>
+              cn(
+                "flex flex-col items-center p-2",
+                isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
+              )
+            }
+          >
+            {item.icon}
+          </NavLink>
+        ))}
+        <NavLink
+          to="/help-support"
           className={({ isActive }) =>
             cn(
               "flex flex-col items-center p-2",
@@ -126,20 +164,9 @@ const MobileFooter = () => (
             )
           }
         >
-          {item.icon}
+          <HelpCircle className="h-6 w-6" />
         </NavLink>
-      ))}
-      <NavLink
-        to="/help-support"
-        className={({ isActive }) =>
-          cn(
-            "flex flex-col items-center p-2",
-            isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-          )
-        }
-      >
-        <HelpCircle className="h-6 w-6" />
-      </NavLink>
+      </div>
     </nav>
   </footer>
 );
