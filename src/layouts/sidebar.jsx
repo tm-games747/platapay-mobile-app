@@ -9,9 +9,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu } from "lucide-react";
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
-import { navItems } from "../App";
 
 const Layout = () => {
   return (
@@ -45,12 +44,11 @@ const Sidebar = () => (
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-base font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
-              {item.icon}
-              {item.title}
-            </SidebarNavLink>
-          ))}
+          <SidebarNavLink to="/" icon={<Home className="h-6 w-6" />}>Home</SidebarNavLink>
+          <SidebarNavLink to="/wallet" icon={<Wallet className="h-6 w-6" />}>E-Wallet</SidebarNavLink>
+          <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
+          <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transaction History</SidebarNavLink>
+          <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Help & Support</SidebarNavLink>
         </nav>
       </div>
     </div>
@@ -74,12 +72,11 @@ const MobileSidebar = () => (
           <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8" />
           <span>PlataPay</span>
         </NavLink>
-        {navItems.map((item) => (
-          <SidebarNavLink key={item.to} to={item.to}>
-            {item.icon}
-            {item.title}
-          </SidebarNavLink>
-        ))}
+        <SidebarNavLink to="/" icon={<Home className="h-6 w-6" />}>Home</SidebarNavLink>
+        <SidebarNavLink to="/wallet" icon={<Wallet className="h-6 w-6" />}>E-Wallet</SidebarNavLink>
+        <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
+        <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transaction History</SidebarNavLink>
+        <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Help & Support</SidebarNavLink>
       </nav>
     </SheetContent>
   </Sheet>
@@ -105,7 +102,7 @@ const UserDropdown = () => (
   </DropdownMenu>
 );
 
-const SidebarNavLink = ({ to, children }) => (
+const SidebarNavLink = ({ to, icon, children }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
@@ -117,6 +114,7 @@ const SidebarNavLink = ({ to, children }) => (
       )
     }
   >
+    {icon}
     {children}
   </NavLink>
 );
@@ -124,21 +122,26 @@ const SidebarNavLink = ({ to, children }) => (
 const MobileFooter = () => (
   <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t p-2">
     <nav className="flex justify-around items-center">
-      {navItems.slice(0, 5).map((item) => (
-        <NavLink
-          key={item.to}
-          to={item.to}
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center p-2",
-              isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
-            )
-          }
-        >
-          {item.icon}
-          <span className="text-xs">{item.title}</span>
-        </NavLink>
-      ))}
+      <NavLink to="/" className="flex flex-col items-center p-2">
+        <Home className="h-6 w-6" />
+        <span className="text-xs">Home</span>
+      </NavLink>
+      <NavLink to="/wallet" className="flex flex-col items-center p-2">
+        <Wallet className="h-6 w-6" />
+        <span className="text-xs">E-Wallet</span>
+      </NavLink>
+      <NavLink to="/qrcode" className="flex flex-col items-center p-2">
+        <QrCode className="h-6 w-6" />
+        <span className="text-xs">QR Code</span>
+      </NavLink>
+      <NavLink to="/history" className="flex flex-col items-center p-2">
+        <History className="h-6 w-6" />
+        <span className="text-xs">History</span>
+      </NavLink>
+      <NavLink to="/help-support" className="flex flex-col items-center p-2">
+        <HelpCircle className="h-6 w-6" />
+        <span className="text-xs">Help</span>
+      </NavLink>
     </nav>
   </footer>
 );
