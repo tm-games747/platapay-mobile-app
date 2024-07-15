@@ -14,6 +14,7 @@ import HelpSupport from "./pages/HelpSupport.jsx";
 import KYCVerification from "./components/KYCVerification.jsx";
 import CreateAccountScreen from "./pages/CreateAccountScreen.jsx";
 import PersonalInformationForm from "./components/PersonalInformationForm.jsx";
+import HomeAddressForm from "./components/HomeAddressForm.jsx";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => {
               <Route path="kyc-verification" element={<KYCVerification />} />
               <Route path="create-account" element={<CreateAccountScreen />} />
               <Route path="personal-information" element={<PersonalInformationForm />} />
+              <Route path="home-address" element={<HomeAddressForm />} />
             </Route>
           </Routes>
         </Router>
