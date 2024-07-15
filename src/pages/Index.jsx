@@ -3,8 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Wallet, Shield, Zap, Smartphone } from 'lucide-react';
 import heroImage from '../../public/images/hero-image.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/create-account');
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* Hero Section */}
@@ -15,7 +22,7 @@ const Index = () => {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Your Money, Your Way</h1>
           <p className="text-xl md:text-2xl mb-8">Experience the future of digital payments with PlataPay</p>
-          <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+          <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" onClick={handleGetStarted}>
             Get Started <ArrowRight className="ml-2" />
           </Button>
         </div>
@@ -46,7 +53,7 @@ const Index = () => {
       <section className="w-full py-20 px-4 md:px-8 lg:px-16 bg-primary text-primary-foreground text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
         <p className="text-xl mb-8">Join thousands of users who trust PlataPay for their digital transactions</p>
-        <Button size="lg" variant="secondary">
+        <Button size="lg" variant="secondary" onClick={handleGetStarted}>
           Create Your Account
         </Button>
       </section>

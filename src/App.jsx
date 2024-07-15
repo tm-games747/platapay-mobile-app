@@ -12,6 +12,7 @@ import UserLogin from "./pages/UserLogin.jsx";
 import TransactionHistory from "./pages/TransactionHistory.jsx";
 import HelpSupport from "./pages/HelpSupport.jsx";
 import KYCVerification from "./components/KYCVerification.jsx";
+import CreateAccountScreen from "./pages/CreateAccountScreen.jsx";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => {
               <Route path="login" element={<UserLogin />} />
               <Route path="help-support" element={<HelpSupport />} />
               <Route path="kyc-verification" element={<KYCVerification />} />
+              <Route path="create-account" element={<CreateAccountScreen />} />
             </Route>
           </Routes>
         </Router>
