@@ -32,12 +32,12 @@ export const navItems = [
     icon: <QrCode className="h-6 w-6" />,
   },
   {
-    title: "Transaction History",
+    title: "Transactions",
     to: "/history",
     icon: <History className="h-6 w-6" />,
   },
   {
-    title: "Help & Support",
+    title: "Support",
     to: "/help-support",
     icon: <HelpCircle className="h-6 w-6" />,
   },

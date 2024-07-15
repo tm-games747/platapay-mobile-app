@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle } from "lucide-react";
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Layout = () => {
@@ -19,10 +19,16 @@ const Layout = () => {
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-primary px-4 lg:h-[60px] lg:px-6">
           <MobileSidebar />
-          <div className="w-full flex-1">
-            {/* Add nav bar content here if needed */}
+          <div className="flex-1 flex justify-center items-center">
+            <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8 mr-2" />
+            <span className="text-xl font-bold text-primary-foreground">PlataPay</span>
           </div>
-          <UserDropdown />
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="text-primary-foreground">
+              <Bell className="h-5 w-5" />
+            </Button>
+            <UserDropdown />
+          </div>
         </header>
         <main className="flex-grow p-4 overflow-auto">
           <Outlet />
@@ -47,8 +53,8 @@ const Sidebar = () => (
           <SidebarNavLink to="/" icon={<Home className="h-6 w-6" />}>Home</SidebarNavLink>
           <SidebarNavLink to="/wallet" icon={<Wallet className="h-6 w-6" />}>E-Wallet</SidebarNavLink>
           <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
-          <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transaction History</SidebarNavLink>
-          <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Help & Support</SidebarNavLink>
+          <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
+          <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
         </nav>
       </div>
     </div>
@@ -75,8 +81,8 @@ const MobileSidebar = () => (
         <SidebarNavLink to="/" icon={<Home className="h-6 w-6" />}>Home</SidebarNavLink>
         <SidebarNavLink to="/wallet" icon={<Wallet className="h-6 w-6" />}>E-Wallet</SidebarNavLink>
         <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
-        <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transaction History</SidebarNavLink>
-        <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Help & Support</SidebarNavLink>
+        <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
+        <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
       </nav>
     </SheetContent>
   </Sheet>
@@ -136,11 +142,11 @@ const MobileFooter = () => (
       </NavLink>
       <NavLink to="/history" className="flex flex-col items-center p-2">
         <History className="h-6 w-6" />
-        <span className="text-xs">History</span>
+        <span className="text-xs">Transactions</span>
       </NavLink>
       <NavLink to="/help-support" className="flex flex-col items-center p-2">
         <HelpCircle className="h-6 w-6" />
-        <span className="text-xs">Help</span>
+        <span className="text-xs">Support</span>
       </NavLink>
     </nav>
   </footer>
