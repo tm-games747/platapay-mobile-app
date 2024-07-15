@@ -20,6 +20,7 @@ import OTPVerificationScreen from "./pages/OTPVerificationScreen.jsx";
 import RegistrationSuccessScreen from "./pages/RegistrationSuccessScreen.jsx";
 import CaptureSpecimenSignature from "./pages/CaptureSpecimenSignature.jsx";
 import CaptureValidIDScreen from "./pages/CaptureValidIDScreen.jsx";
+import CaptureFiveAngleSelfie from "./pages/CaptureFiveAngleSelfie.jsx";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ const App = () => {
               <Route path="registration-success" element={<RegistrationSuccessScreen />} />
               <Route path="capture-signature" element={<CaptureSpecimenSignature />} />
               <Route path="capture-valid-id" element={<CaptureValidIDScreen />} />
+              <Route path="capture-five-angle-selfie" element={<CaptureFiveAngleSelfie />} />
             </Route>
           </Routes>
         </Router>
