@@ -17,6 +17,7 @@ import PersonalInformationForm from "./components/PersonalInformationForm.jsx";
 import HomeAddressForm from "./components/HomeAddressForm.jsx";
 import MPINNomination from "./pages/MPINNomination.jsx";
 import OTPVerificationScreen from "./pages/OTPVerificationScreen.jsx";
+import RegistrationSuccessScreen from "./pages/RegistrationSuccessScreen.jsx";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,7 @@ const App = () => {
               <Route path="home-address" element={<HomeAddressForm />} />
               <Route path="mpin-nomination" element={<MPINNomination />} />
               <Route path="otp-verification" element={<OTPVerificationScreen />} />
+              <Route path="registration-success" element={<RegistrationSuccessScreen />} />
             </Route>
           </Routes>
         </Router>
