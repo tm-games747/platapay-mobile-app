@@ -2,9 +2,20 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useQuery } from '@tanstack/react-query';
+
+// Mock API function to fetch balance
+const fetchBalance = async () => {
+  // Simulating API call delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  return 10000; // Hardcoded balance for now
+};
 
 const EWallet = () => {
-  const balance = 10000; // Example balance in Philippine Peso
+  const { data: balance, isLoading, error } = useQuery({
+    queryKey: ['balance'],
+    queryFn: fetchBalance
+  });
   
   const sampleTransactions = [
     { date: '2023-03-15', description: 'Top-up', amount: 5000 },
@@ -21,11 +32,16 @@ const EWallet = () => {
     console.log('Cash-out functionality to be implemented');
   };
 
+  if (isLoading) return <div>Loading balance...</div>;
+  if (error) return <div>Error fetching balance: {error.message}</div>;
+
   return (
     <div className="container mx-auto p-4 space-y-6">
       <Card className="bg-primary text-primary-foreground">
-        <CardContent className="pt-6">
-          <p className="text-lg">Current Balance</p>
+        <CardHeader>
+          <CardTitle>Your Balance</CardTitle>
+        </CardHeader>
+        <CardContent>
           <h2 className="text-4xl font-bold">₱{balance.toLocaleString()}</h2>
         </CardContent>
       </Card>
