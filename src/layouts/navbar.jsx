@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,14 +12,35 @@ import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
+import { useState } from "react";
 
 const Layout = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false); // This should be managed by your authentication system
+
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6 justify-center">
-        
-        <MobileNav />
-        <UserMenu />
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
+        <div className="flex items-center justify-between w-full">
+          <MobileNav />
+          <div className="flex items-center justify-center flex-grow">
+            <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8 mr-2" />
+            <span className="text-xl font-bold text-primary-foreground">PlataPay</span>
+          </div>
+          <div className="flex items-center">
+            {isSignedIn ? (
+              <UserMenu />
+            ) : (
+              <>
+                <NavLink to="/login" className="text-primary-foreground hover:text-secondary-foreground mr-4">
+                  Login
+                </NavLink>
+                <NavLink to="/register" className="text-primary-foreground hover:text-secondary-foreground">
+                  Register
+                </NavLink>
+              </>
+            )}
+          </div>
+        </div>
       </header>
       <main className="flex-grow overflow-auto">
         <Outlet />
@@ -67,6 +87,7 @@ const UserMenu = () => (
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
+      <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Settings</DropdownMenuItem>
       <DropdownMenuItem>Support</DropdownMenuItem>
       <DropdownMenuSeparator />
