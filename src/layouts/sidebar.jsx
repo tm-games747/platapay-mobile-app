@@ -20,7 +20,9 @@ const Layout = () => {
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-primary px-4 lg:h-[60px] lg:px-6">
           <MobileSidebar />
-          <div className="w-full flex-1">{/* Add nav bar content here! */}</div>
+          <div className="w-full flex-1">
+            {/* Add nav bar content here if needed */}
+          </div>
           <UserDropdown />
         </header>
         <main className="flex-grow p-4 overflow-auto">
@@ -36,11 +38,14 @@ const Sidebar = () => (
   <div className="hidden border-r bg-muted/40 md:block">
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-        {/* Logo removed */}
+        <NavLink to="/" className="flex items-center gap-2 font-semibold">
+          <Package2 className="h-6 w-6" />
+          <span>PlataPay</span>
+        </NavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.filter(item => item.to !== "/wallet").map((item) => (
+          {navItems.map((item) => (
             <SidebarNavLink key={item.to} to={item.to}>
               {item.icon}
               {item.title}
@@ -67,10 +72,11 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Platapay</span>
+          <span>PlataPay</span>
         </NavLink>
-        {navItems.filter(item => item.to !== "/wallet").map((item) => (
+        {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
+            {item.icon}
             {item.title}
           </SidebarNavLink>
         ))}
@@ -90,6 +96,7 @@ const UserDropdown = () => (
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
+      <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Settings</DropdownMenuItem>
       <DropdownMenuItem>Support</DropdownMenuItem>
       <DropdownMenuSeparator />
@@ -103,8 +110,8 @@ const SidebarNavLink = ({ to, children }) => (
     to={to}
     className={({ isActive }) =>
       cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary text-muted-foreground",
-        isActive && "text-primary bg-muted",
+        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
+        isActive ? "text-primary bg-primary/10" : "text-muted-foreground"
       )
     }
   >
@@ -113,65 +120,68 @@ const SidebarNavLink = ({ to, children }) => (
 );
 
 const MobileFooter = () => (
-  <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary p-2">
+  <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t p-2">
     <nav className="flex justify-around items-center">
-      <div className="flex justify-between items-center w-full">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center p-2",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-            )
-          }
-        >
-          <Home className="h-6 w-6" />
-        </NavLink>
-        <NavLink
-          to="/wallet"
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center p-2",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-            )
-          }
-        >
-          <Wallet className="h-6 w-6" />
-        </NavLink>
-        <NavLink
-          to="/qrcode"
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center justify-center p-2 -mt-8 bg-primary rounded-full border-4 border-background",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-            )
-          }
-        >
-          <QrCode className="h-6 w-6" />
-        </NavLink>
-        <NavLink
-          to="/history"
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center p-2",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-            )
-          }
-        >
-          <History className="h-6 w-6" />
-        </NavLink>
-        <NavLink
-          to="/help-support"
-          className={({ isActive }) =>
-            cn(
-              "flex flex-col items-center p-2",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
-            )
-          }
-        >
-          <HelpCircle className="h-6 w-6" />
-        </NavLink>
-      </div>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center p-2",
+            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
+          )
+        }
+      >
+        <Home className="h-6 w-6" />
+        <span className="text-xs">Home</span>
+      </NavLink>
+      <NavLink
+        to="/wallet"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center p-2",
+            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
+          )
+        }
+      >
+        <Wallet className="h-6 w-6" />
+        <span className="text-xs">Wallet</span>
+      </NavLink>
+      <NavLink
+        to="/qrcode"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center justify-center p-2 -mt-4 bg-primary text-primary-foreground rounded-full shadow-lg",
+            isActive ? "bg-primary-dark" : ""
+          )
+        }
+      >
+        <QrCode className="h-6 w-6" />
+        <span className="text-xs">QR Code</span>
+      </NavLink>
+      <NavLink
+        to="/history"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center p-2",
+            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
+          )
+        }
+      >
+        <History className="h-6 w-6" />
+        <span className="text-xs">History</span>
+      </NavLink>
+      <NavLink
+        to="/help-support"
+        className={({ isActive }) =>
+          cn(
+            "flex flex-col items-center p-2",
+            isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
+          )
+        }
+      >
+        <HelpCircle className="h-6 w-6" />
+        <span className="text-xs">Help</span>
+      </NavLink>
     </nav>
   </footer>
 );
