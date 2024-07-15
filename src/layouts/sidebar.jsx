@@ -121,26 +121,24 @@ const MobileFooter = () => (
           to={item.to}
           className={({ isActive }) =>
             cn(
-              "flex flex-col items-center p-2 text-xs",
+              "flex flex-col items-center p-2",
               isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
             )
           }
         >
           {item.icon}
-          <span className="mt-1">{item.title}</span>
         </NavLink>
       ))}
       <NavLink
         to="/help-support"
         className={({ isActive }) =>
           cn(
-            "flex flex-col items-center p-2 text-xs",
+            "flex flex-col items-center p-2",
             isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-primary-foreground"
           )
         }
       >
         <HelpCircle className="h-6 w-6" />
-        <span className="mt-1">Help</span>
       </NavLink>
     </nav>
   </footer>
