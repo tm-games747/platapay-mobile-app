@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from "lucide-react";
 import { NavLink, Outlet, Link } from "react-router-dom";
+import ImageRenderer from '@/components/ImageRenderer';
 
 const Layout = () => {
   return (
@@ -28,8 +29,13 @@ const Layout = () => {
         <header className="flex h-14 items-center gap-4 border-b bg-primary px-4 lg:h-[60px] lg:px-6">
           <MobileSidebar />
           <div className="flex-1 flex justify-center items-center">
-            <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8 mr-2" />
-            <span className="text-xl font-bold text-primary-foreground">PlataPay</span>
+            <ImageRenderer
+              url="https://marcroland84.wordpress.com/wp-content/uploads/2024/06/copy-of-innovate-hub-500-x-500-px.png?w=500"
+              alt="PlataPay Logo"
+              width={32}
+              height={32}
+            />
+            <span className="text-xl font-bold text-primary-foreground ml-2">PlataPay</span>
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" className="text-primary-foreground">
@@ -52,7 +58,12 @@ const Sidebar = () => (
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
-          <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8" />
+          <ImageRenderer
+            url="https://marcroland84.wordpress.com/wp-content/uploads/2024/06/copy-of-innovate-hub-500-x-500-px.png?w=500"
+            alt="PlataPay Logo"
+            width={32}
+            height={32}
+          />
           <span className="text-xl font-bold text-primary">PlataPay</span>
         </NavLink>
       </div>
@@ -114,7 +125,12 @@ const MobileSidebar = () => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
-          <img src="/images/logo.png" alt="PlataPay Logo" className="h-8 w-8" />
+          <ImageRenderer
+            url="https://marcroland84.wordpress.com/wp-content/uploads/2024/06/copy-of-innovate-hub-500-x-500-px.png?w=500"
+            alt="PlataPay Logo"
+            width={32}
+            height={32}
+          />
           <span>PlataPay</span>
         </NavLink>
         <SidebarNavLink to="/" icon={<Home className="h-6 w-6" />}>Home</SidebarNavLink>
