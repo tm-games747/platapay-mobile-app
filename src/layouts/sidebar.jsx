@@ -273,23 +273,23 @@ const MobileFooter = () => (
     <nav className="flex justify-around items-center">
       <NavLink to="/" className="flex flex-col items-center p-2">
         <Home className="h-6 w-6" />
-        <span className="text-xs">Home</span>
+        <span className="sr-only">Home</span>
       </NavLink>
       <NavLink to="/wallet" className="flex flex-col items-center p-2">
         <Wallet className="h-6 w-6" />
-        <span className="text-xs">E-Wallet</span>
+        <span className="sr-only">E-Wallet</span>
       </NavLink>
       <NavLink to="/qrcode" className="flex flex-col items-center p-2">
         <QrCode className="h-6 w-6" />
-        <span className="text-xs">QR Code</span>
+        <span className="sr-only">QR Code</span>
       </NavLink>
       <NavLink to="/history" className="flex flex-col items-center p-2">
         <History className="h-6 w-6" />
-        <span className="text-xs">Transactions</span>
+        <span className="sr-only">Transactions</span>
       </NavLink>
       <NavLink to="/help-support" className="flex flex-col items-center p-2">
         <HelpCircle className="h-6 w-6" />
-        <span className="text-xs">Support</span>
+        <span className="sr-only">Support</span>
       </NavLink>
     </nav>
   </footer>
