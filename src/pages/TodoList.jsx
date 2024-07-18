@@ -3,19 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QRCodeSVG } from 'qrcode.react';
 import { Download, Share2 } from "lucide-react";
 
 const QRCodeGenerator = () => {
-  const [qrType, setQRType] = useState("");
   const [inputText, setInputText] = useState("");
   const [qrCode, setQRCode] = useState("");
 
   const generateQRCode = () => {
-    if (qrType && inputText) {
-      setQRCode(`${qrType}:${inputText}`);
-    }
+    setQRCode(inputText);
   };
 
   const downloadQRCode = () => {
@@ -30,7 +26,7 @@ const QRCodeGenerator = () => {
       ctx.drawImage(img, 0, 0);
       const pngFile = canvas.toDataURL("image/png");
       const downloadLink = document.createElement("a");
-      downloadLink.download = `qrcode-${qrType}`;
+      downloadLink.download = "qrcode";
       downloadLink.href = `${pngFile}`;
       downloadLink.click();
     };
@@ -41,13 +37,14 @@ const QRCodeGenerator = () => {
     if (navigator.share) {
       navigator.share({
         title: 'QR Code',
-        text: `Check out this ${qrType} QR Code!`,
+        text: 'Check out this QR Code!',
         url: window.location.href,
       })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
     } else {
       console.log('Web Share API not supported');
+      // Fallback behavior for browsers that don't support Web Share API
       alert('Sharing is not supported on this browser. You can copy the URL manually.');
     }
   };
@@ -61,25 +58,10 @@ const QRCodeGenerator = () => {
         <CardContent>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="qr-type">QR Code Type</Label>
-              <Select onValueChange={setQRType} value={qrType}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select QR code type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="payment">Payment</SelectItem>
-                  <SelectItem value="receive">Receive Payment</SelectItem>
-                  <SelectItem value="bill">Bill Payment</SelectItem>
-                  <SelectItem value="p2p">Peer-to-Peer Transfer</SelectItem>
-                  <SelectItem value="promo">Promotion/Discount</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="input-text">Enter details</Label>
+              <Label htmlFor="input-text">Enter text or URL</Label>
               <Input
                 id="input-text"
-                placeholder="Enter details for QR code"
+                placeholder="Enter text or URL to generate QR code"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
               />
