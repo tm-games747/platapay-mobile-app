@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Wallet, Shield, Zap, Smartphone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import ImageRenderer from '@/components/ImageRenderer';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -16,15 +15,8 @@ const Index = () => {
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* Hero Section */}
       <section className="w-full bg-primary text-primary-foreground py-20 px-4 md:px-8 lg:px-16 relative">
-        <div className="absolute inset-0 z-0">
-          <ImageRenderer
-            url="/images/hero-image.jpg"
-            alt="Hero Background"
-            width="100%"
-            height="100%"
-          />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero-image.jpg')" }} />
+        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center justify-center min-h-[60vh]">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Your Money, Your Way</h1>
           <p className="text-xl md:text-2xl mb-8">Experience the future of digital payments with PlataPay</p>
           <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" onClick={handleGetStarted}>
@@ -37,10 +29,10 @@ const Index = () => {
       <section className="w-full py-16 px-4 md:px-8 lg:px-16 bg-background">
         <h2 className="text-3xl font-bold text-center mb-12">Why Choose PlataPay?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FeatureCard icon={<Wallet />} title="Easy Transactions" description="Send and receive money with just a few taps" />
-          <FeatureCard icon={<Shield />} title="Secure Payments" description="Bank-grade encryption for all your transactions" />
-          <FeatureCard icon={<Zap />} title="Instant Transfers" description="Real-time money transfers to anyone, anywhere" />
-          <FeatureCard icon={<Smartphone />} title="Mobile First" description="Designed for the best mobile experience" />
+          <FeatureCard icon={<Wallet className="h-12 w-12" />} title="Easy Transactions" description="Send and receive money with just a few taps" />
+          <FeatureCard icon={<Shield className="h-12 w-12" />} title="Secure Payments" description="Bank-grade encryption for all your transactions" />
+          <FeatureCard icon={<Zap className="h-12 w-12" />} title="Instant Transfers" description="Real-time money transfers to anyone, anywhere" />
+          <FeatureCard icon={<Smartphone className="h-12 w-12" />} title="Mobile First" description="Designed for the best mobile experience" />
         </div>
       </section>
 
@@ -68,13 +60,11 @@ const Index = () => {
 
 const FeatureCard = ({ icon, title, description }) => (
   <Card className="text-center">
-    <CardHeader>
-      <div className="mx-auto bg-primary text-primary-foreground p-3 rounded-full w-16 h-16 flex items-center justify-center">
+    <CardContent className="pt-6">
+      <div className="mx-auto bg-primary text-primary-foreground p-3 rounded-full w-20 h-20 flex items-center justify-center mb-4">
         {icon}
       </div>
-      <CardTitle className="mt-4">{title}</CardTitle>
-    </CardHeader>
-    <CardContent>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p>{description}</p>
     </CardContent>
   </Card>
@@ -82,13 +72,11 @@ const FeatureCard = ({ icon, title, description }) => (
 
 const StepCard = ({ number, title, description }) => (
   <Card className="text-center w-full md:w-64">
-    <CardHeader>
-      <div className="mx-auto bg-primary text-primary-foreground rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold">
+    <CardContent className="pt-6">
+      <div className="mx-auto bg-primary text-primary-foreground rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4">
         {number}
       </div>
-      <CardTitle className="mt-4">{title}</CardTitle>
-    </CardHeader>
-    <CardContent>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p>{description}</p>
     </CardContent>
   </Card>
