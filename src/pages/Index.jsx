@@ -14,9 +14,8 @@ const Index = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* Hero Section */}
-      <section className="w-full bg-primary text-primary-foreground py-20 px-4 md:px-8 lg:px-16 relative">
-        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero-image.jpg')" }} />
-        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center justify-center min-h-[60vh]">
+      <section className="w-full bg-gradient-to-br from-purple-900 to-gray-400 text-primary-foreground py-20 px-4 md:px-8 lg:px-16">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center min-h-[60vh]">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Your Money, Your Way</h1>
           <p className="text-xl md:text-2xl mb-8">Experience the future of digital payments with PlataPay</p>
           <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" onClick={handleGetStarted}>
