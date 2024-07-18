@@ -17,7 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from 'lucide-react';
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown, Palette } from 'lucide-react';
 import { NavLink, Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
@@ -63,6 +63,7 @@ const Sidebar = () => (
           <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
           <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
           <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
+          <SidebarNavLink to="/theme-management" icon={<Palette className="h-6 w-6" />}>Theme Management</SidebarNavLink>
           <SidebarDropdown
             icon={<Layers className="h-6 w-6" />}
             label="Requested Screens"
@@ -122,6 +123,7 @@ const MobileSidebar = () => (
         <SidebarNavLink to="/qrcode" icon={<QrCode className="h-6 w-6" />}>QR Code</SidebarNavLink>
         <SidebarNavLink to="/history" icon={<History className="h-6 w-6" />}>Transactions</SidebarNavLink>
         <SidebarNavLink to="/help-support" icon={<HelpCircle className="h-6 w-6" />}>Support</SidebarNavLink>
+        <SidebarNavLink to="/theme-management" icon={<Palette className="h-6 w-6" />}>Theme Management</SidebarNavLink>
         <MobileSidebarDropdown
           icon={<Layers className="h-6 w-6" />}
           label="Requested Screens"
