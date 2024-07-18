@@ -17,7 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from "lucide-react";
+import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown } from 'lucide-react';
 import { NavLink, Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
@@ -269,25 +269,25 @@ const MobileSubmenuDialog = ({ item }) => (
 );
 
 const MobileFooter = () => (
-  <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t p-2">
+  <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-primary border-t p-2">
     <nav className="flex justify-around items-center">
-      <NavLink to="/" className="flex flex-col items-center p-2">
+      <NavLink to="/" className="flex flex-col items-center p-2 text-primary-foreground">
         <Home className="h-6 w-6" />
         <span className="sr-only">Home</span>
       </NavLink>
-      <NavLink to="/wallet" className="flex flex-col items-center p-2">
+      <NavLink to="/wallet" className="flex flex-col items-center p-2 text-primary-foreground">
         <Wallet className="h-6 w-6" />
         <span className="sr-only">E-Wallet</span>
       </NavLink>
-      <NavLink to="/qrcode" className="flex flex-col items-center p-2">
+      <NavLink to="/qrcode" className="flex flex-col items-center p-2 text-primary-foreground">
         <QrCode className="h-6 w-6" />
         <span className="sr-only">QR Code</span>
       </NavLink>
-      <NavLink to="/history" className="flex flex-col items-center p-2">
+      <NavLink to="/history" className="flex flex-col items-center p-2 text-primary-foreground">
         <History className="h-6 w-6" />
         <span className="sr-only">Transactions</span>
       </NavLink>
-      <NavLink to="/help-support" className="flex flex-col items-center p-2">
+      <NavLink to="/help-support" className="flex flex-col items-center p-2 text-primary-foreground">
         <HelpCircle className="h-6 w-6" />
         <span className="sr-only">Support</span>
       </NavLink>
