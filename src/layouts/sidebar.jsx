@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Home, Wallet, QrCode, History, HelpCircle, Bell, Layers, ChevronDown, Palette } from 'lucide-react';
 import { NavLink, Outlet, Link } from "react-router-dom";
+import { useTheme } from "@/components/theme-provider";
 
 const Layout = () => {
   return (
@@ -97,6 +98,7 @@ const Sidebar = () => (
           />
         </nav>
       </div>
+      <ThemeDropdown />
     </div>
   </div>
 );
@@ -156,6 +158,9 @@ const MobileSidebar = () => (
           ]}
         />
       </nav>
+      <div className="mt-auto">
+        <ThemeDropdown />
+      </div>
     </SheetContent>
   </Sheet>
 );
@@ -174,6 +179,8 @@ const UserDropdown = () => (
       <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Settings</DropdownMenuItem>
       <DropdownMenuItem>Support</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <ThemeDropdownItems />
       <DropdownMenuSeparator />
       <DropdownMenuItem>Logout</DropdownMenuItem>
     </DropdownMenuContent>
@@ -296,5 +303,41 @@ const MobileFooter = () => (
     </nav>
   </footer>
 );
+
+const ThemeDropdown = () => {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="w-full justify-start">
+          <Palette className="mr-2 h-4 w-4" />
+          <span>Theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <ThemeDropdownItems />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+const ThemeDropdownItems = () => {
+  const { setTheme } = useTheme();
+
+  return (
+    <>
+      <DropdownMenuItem onClick={() => setTheme("light")}>
+        Light
+      </DropdownMenuItem>
+      <DropdownMenuItem onClick={() => setTheme("dark")}>
+        Dark
+      </DropdownMenuItem>
+      <DropdownMenuItem onClick={() => setTheme("blue")}>
+        Blue
+      </DropdownMenuItem>
+    </>
+  );
+};
 
 export default Layout;
