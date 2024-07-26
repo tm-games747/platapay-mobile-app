@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 100% 98%;
+    --foreground: 220 10% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 100% 98%;
+    --card-foreground: 220 10% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 100% 98%;
+    --popover-foreground: 220 10% 10%;
 
-    --primary: 270 47.4% 11.2%; /* Dark Purple */
-    --primary-foreground: 270 40% 98%; /* Light Purple */
+    --primary: 220 100% 50%;
+    --primary-foreground: 220 100% 98%;
 
-    --secondary: 270 40% 96.1%; /* Light Purple */
-    --secondary-foreground: 270 47.4% 11.2%; /* Dark Purple */
+    --secondary: 220 30% 90%;
+    --secondary-foreground: 220 10% 10%;
 
-    --muted: 270 40% 96.1%; /* Light Purple */
-    --muted-foreground: 270 16.3% 46.9%; /* Silver */
+    --muted: 220 30% 90%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 270 40% 96.1%; /* Light Purple */
-    --accent-foreground: 270 47.4% 11.2%; /* Dark Purple */
+    --accent: 220 30% 90%;
+    --accent-foreground: 220 10% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 270 40% 98%; /* Light Purple */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 220 100% 98%;
 
-    --border: 270 31.8% 91.4%; /* Silver */
-    --input: 270 31.8% 91.4%; /* Silver */
-    --ring: 270 84% 4.9%;
+    --border: 220 30% 80%;
+    --input: 220 30% 80%;
+    --ring: 220 100% 50%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 270 84% 4.9%; /* Dark Purple */
-    --foreground: 270 40% 98%; /* Light Purple */
+    --background: 220 50% 10%;
+    --foreground: 220 10% 98%;
 
-    --card: 270 84% 4.9%; /* Dark Purple */
-    --card-foreground: 270 40% 98%; /* Light Purple */
+    --card: 220 50% 10%;
+    --card-foreground: 220 10% 98%;
 
-    --popover: 270 84% 4.9%; /* Dark Purple */
-    --popover-foreground: 270 40% 98%; /* Light Purple */
+    --popover: 220 50% 10%;
+    --popover-foreground: 220 10% 98%;
 
-    --primary: 270 40% 98%; /* Light Purple */
-    --primary-foreground: 270 47.4% 11.2%; /* Dark Purple */
+    --primary: 220 100% 60%;
+    --primary-foreground: 220 10% 98%;
 
-    --secondary: 270 32.6% 17.5%; /* Dark Purple */
-    --secondary-foreground: 270 40% 98%; /* Light Purple */
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 220 10% 98%;
 
-    --muted: 270 32.6% 17.5%; /* Dark Purple */
-    --muted-foreground: 270 20.2% 65.1%; /* Silver */
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 270 32.6% 17.5%; /* Dark Purple */
-    --accent-foreground: 270 40% 98%; /* Light Purple */
+    --accent: 220 30% 20%;
+    --accent-foreground: 220 10% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 270 40% 98%; /* Light Purple */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 220 10% 98%;
 
-    --border: 270 32.6% 17.5%; /* Dark Purple */
-    --input: 270 32.6% 17.5%; /* Dark Purple */
-    --ring: 270 26.8% 83.9%;
+    --border: 220 30% 30%;
+    --input: 220 30% 30%;
+    --ring: 220 100% 60%;
   }
 }
 
@@ -72,7 +72,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(270, 47.4%, 11.2%), hsl(270, 16.3%, 46.9%), hsl(270, 40%, 96.1%));
+    background: linear-gradient(135deg, hsl(220, 100%, 98%), hsl(220, 30%, 90%), hsl(220, 100%, 50%));
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
