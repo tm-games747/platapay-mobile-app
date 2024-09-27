@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Bell, Calendar, CreditCard, Home, Menu, QrCode, Settings, User, Plus, ArrowUp, Smartphone, Send, Globe, Zap } from 'lucide-react';
+import { ArrowLeft, Bell, Calendar, CreditCard, Plus, ArrowUp, Smartphone, Send, Globe, Zap } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -72,218 +72,161 @@ const Wallet = () => {
   const [showAddCard, setShowAddCard] = useState(false);
 
   return (
-    <div className="flex h-screen bg-[#4B0082]">
-      <main className="flex-1 flex flex-col overflow-hidden">
-        {/* Mobile header */}
-        <header className="bg-[#3B006A] text-white p-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <button className="mr-4 md:hidden">
-              <Menu className="w-6 h-6" />
-            </button>
-            <div className="h-8 w-32 relative">
-              <img
-                src="/images/logo.png"
-                alt="Platapay Logo"
-                className="h-full w-auto object-contain"
-              />
+    <div className="flex-1 overflow-y-auto bg-gray-100">
+      {showAddCard ? (
+        <div className="p-4 md:p-8">
+          <div className="bg-white rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.3)] p-6 md:p-8 max-w-3xl mx-auto mt-8 md:mt-16 mb-24 md:mb-8">
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-800 md:text-3xl">Add Bank Card</h2>
+              <p className="text-gray-600 mt-1">Enter your bank card details below</p>
             </div>
-          </div>
-          <div className="flex items-center">
-            <button className="mr-4">
-              <Bell className="w-6 h-6" />
-            </button>
-            <button className="md:hidden" onClick={() => setShowAddCard(!showAddCard)}>
-              <ArrowLeft className="w-6 h-6" />
-            </button>
-          </div>
-        </header>
 
-        {/* Scrollable content area */}
-        <div className="flex-1 overflow-y-auto bg-gray-100">
-          {showAddCard ? (
-            <div className="p-4 md:p-8">
-              <div className="bg-white rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.3)] p-6 md:p-8 max-w-3xl mx-auto mt-8 md:mt-16 mb-24 md:mb-8">
-                <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800 md:text-3xl">Add Bank Card</h2>
-                  <p className="text-gray-600 mt-1">Enter your bank card details below</p>
+            {/* Bank Card Display */}
+            <div className="bg-gradient-to-r from-[#5B1092] to-[#7B2CBF] text-white p-6 rounded-xl shadow-md mb-6 transform transition-all hover:scale-105">
+              <div className="flex justify-between items-start">
+                <span className="text-lg">Bank Card</span>
+                <div className="flex space-x-2">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full opacity-80" />
+                  <div className="w-8 h-8 bg-green-500 rounded-full opacity-80" />
                 </div>
-
-                {/* Bank Card Display */}
-                <div className="bg-gradient-to-r from-[#5B1092] to-[#7B2CBF] text-white p-6 rounded-xl shadow-md mb-6 transform transition-all hover:scale-105">
-                  <div className="flex justify-between items-start">
-                    <span className="text-lg">Bank Card</span>
-                    <div className="flex space-x-2">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full opacity-80" />
-                      <div className="w-8 h-8 bg-green-500 rounded-full opacity-80" />
-                    </div>
-                  </div>
-                  <div className="mt-6 text-2xl tracking-wider">XXXX XXXX XXXX XXXX</div>
-                  <div className="mt-6 flex justify-between">
-                    <span>Card holder</span>
-                    <span>DD/MM</span>
-                  </div>
-                </div>
-
-                {/* Form Fields */}
-                <form className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-gray-700">Name on card</Label>
-                    <Input id="name" placeholder="Enter name on card" className="mt-1" />
-                  </div>
-                  <div>
-                    <Label htmlFor="cardNumber" className="text-gray-700">Card Number</Label>
-                    <Input id="cardNumber" placeholder="Enter your card number" className="mt-1" />
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex-1">
-                      <Label htmlFor="expiry" className="text-gray-700">Expiry date</Label>
-                      <div className="relative mt-1">
-                        <Input id="expiry" placeholder="MM/YY" />
-                        <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <Label htmlFor="cvv" className="text-gray-700">CVV</Label>
-                      <Input id="cvv" placeholder="CVV code" className="mt-1" />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="bankName" className="text-gray-700">Bank Name</Label>
-                    <Select>
-                      <SelectTrigger id="bankName" className="mt-1">
-                        <SelectValue placeholder="Select your bank" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="bdo">BDO</SelectItem>
-                        <SelectItem value="bpi">BPI</SelectItem>
-                        <SelectItem value="metrobank">Metrobank</SelectItem>
-                        <SelectItem value="unionbank">UnionBank</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="saveCard" />
-                    <label htmlFor="saveCard" className="text-sm text-gray-600">
-                      Save this card information for future transactions
-                    </label>
-                  </div>
-                  <Button className="w-full bg-[#4B0082] hover:bg-[#5B1092] text-white font-semibold py-2 px-4 rounded">
-                    Add Bank Card
-                  </Button>
-                </form>
+              </div>
+              <div className="mt-6 text-2xl tracking-wider">XXXX XXXX XXXX XXXX</div>
+              <div className="mt-6 flex justify-between">
+                <span>Card holder</span>
+                <span>DD/MM</span>
               </div>
             </div>
-          ) : (
-            <>
-              {/* Wallet Balance Section */}
-              <div className="bg-[#4B0082] text-white p-6 rounded-b-[40px] shadow-lg">
-                <h2 className="text-2xl font-semibold mb-2">Total Balance</h2>
-                <p className="text-4xl font-bold mb-4">₱10,000.00</p>
-                <div className="flex justify-between mb-4">
-                  <Button variant="outline" className="bg-white text-[#4B0082] hover:bg-gray-100 flex-1 mr-2">
-                    <Plus className="w-4 h-4 mr-2" /> Add Money
-                  </Button>
-                  <Button variant="outline" className="bg-white text-[#4B0082] hover:bg-gray-100 flex-1 ml-2">
-                    <ArrowUp className="w-4 h-4 mr-2" /> Send Money
-                  </Button>
-                </div>
-                <VirtualCard />
-              </div>
 
-              {/* Main Features */}
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Main Features</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <FeatureButton icon={<Send className="w-6 h-6" />} label="PaSend" to="/pasend" />
-                  <FeatureButton icon={<Smartphone className="w-6 h-6" />} label="PaLoad" to="/paload" />
-                  <FeatureButton icon={<Globe className="w-6 h-6" />} label="Remit" to="/remit" />
-                  <FeatureButton icon={<Zap className="w-6 h-6" />} label="Pay Bills" to="/pay-bills" />
+            {/* Form Fields */}
+            <form className="space-y-6">
+              <div>
+                <Label htmlFor="name" className="text-gray-700">Name on card</Label>
+                <Input id="name" placeholder="Enter name on card" className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="cardNumber" className="text-gray-700">Card Number</Label>
+                <Input id="cardNumber" placeholder="Enter your card number" className="mt-1" />
+              </div>
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <Label htmlFor="expiry" className="text-gray-700">Expiry date</Label>
+                  <div className="relative mt-1">
+                    <Input id="expiry" placeholder="MM/YY" />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <Label htmlFor="cvv" className="text-gray-700">CVV</Label>
+                  <Input id="cvv" placeholder="CVV code" className="mt-1" />
                 </div>
               </div>
-
-              {/* Promotions Slider */}
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Special Offers</h3>
-                <Carousel className="w-full max-w-xs mx-auto">
-                  <CarouselContent>
-                    <CarouselItem>
-                      <PromotionCard
-                        title="PaSend Promo"
-                        description="Send money to anyone and get a chance to win ₱1,000 cashback!"
-                        buttonText="Send Now"
-                        to="/pasend"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <PromotionCard
-                        title="PaLoad Bonus"
-                        description="Get 5% extra load on your next PaLoad transaction!"
-                        buttonText="Load Now"
-                        to="/paload"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <PromotionCard
-                        title="Remit Rewards"
-                        description="Earn double points on international remittances this month!"
-                        buttonText="Learn More"
-                        to="/remit"
-                      />
-                    </CarouselItem>
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
+              <div>
+                <Label htmlFor="bankName" className="text-gray-700">Bank Name</Label>
+                <Select>
+                  <SelectTrigger id="bankName" className="mt-1">
+                    <SelectValue placeholder="Select your bank" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="bdo">BDO</SelectItem>
+                    <SelectItem value="bpi">BPI</SelectItem>
+                    <SelectItem value="metrobank">Metrobank</SelectItem>
+                    <SelectItem value="unionbank">UnionBank</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-
-              {/* Recent Transactions */}
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Recent Transactions</h3>
-                <TransactionItem
-                  title="PaLoad: Mobile Top-up"
-                  amount="- ₱100.00"
-                  date="Today, 2:30 PM"
-                  icon={<Smartphone className="text-[#4B0082] w-6 h-6" />}
-                />
-                <TransactionItem
-                  title="Remit: International Transfer"
-                  amount="- ₱5,000.00"
-                  date="Yesterday, 10:15 AM"
-                  icon={<Globe className="text-[#4B0082] w-6 h-6" />}
-                />
+              <div className="flex items-center space-x-2">
+                <Checkbox id="saveCard" />
+                <label htmlFor="saveCard" className="text-sm text-gray-600">
+                  Save this card information for future transactions
+                </label>
               </div>
-            </>
-          )}
+              <Button className="w-full bg-[#4B0082] hover:bg-[#5B1092] text-white font-semibold py-2 px-4 rounded">
+                Add Bank Card
+              </Button>
+            </form>
+          </div>
         </div>
+      ) : (
+        <>
+          {/* Wallet Balance Section */}
+          <div className="bg-[#4B0082] text-white p-6 rounded-b-[40px] shadow-lg">
+            <h2 className="text-2xl font-semibold mb-2">Total Balance</h2>
+            <p className="text-4xl font-bold mb-4">₱10,000.00</p>
+            <div className="flex justify-between mb-4">
+              <Button variant="outline" className="bg-white text-[#4B0082] hover:bg-gray-100 flex-1 mr-2">
+                <Plus className="w-4 h-4 mr-2" /> Add Money
+              </Button>
+              <Button variant="outline" className="bg-white text-[#4B0082] hover:bg-gray-100 flex-1 ml-2">
+                <ArrowUp className="w-4 h-4 mr-2" /> Send Money
+              </Button>
+            </div>
+            <VirtualCard />
+          </div>
 
-        {/* Mobile footer navigation */}
-        <footer className="md:hidden bg-[#3B006A] text-white py-2 fixed bottom-0 left-0 right-0 shadow-lg">
-          <nav className="flex justify-around items-center relative">
-            <Link to="/" className="flex flex-col items-center p-2">
-              <Home className="w-6 h-6" />
-              <span className="text-xs mt-1">Home</span>
-            </Link>
-            <Link to="/cards" className="flex flex-col items-center p-2">
-              <CreditCard className="w-6 h-6" />
-              <span className="text-xs mt-1">Cards</span>
-            </Link>
-            <Link to="/scan" className="flex flex-col items-center p-2 relative">
-              <div className="absolute -top-8 bg-[#4B0082] rounded-full p-4">
-                <QrCode className="w-8 h-8" />
-              </div>
-              <span className="text-xs mt-8">Scan</span>
-            </Link>
-            <Link to="/profile" className="flex flex-col items-center p-2">
-              <User className="w-6 h-6" />
-              <span className="text-xs mt-1">Profile</span>
-            </Link>
-            <Link to="/settings" className="flex flex-col items-center p-2">
-              <Settings className="w-6 h-6" />
-              <span className="text-xs mt-1">Settings</span>
-            </Link>
-          </nav>
-        </footer>
-      </main>
+          {/* Main Features */}
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-4">Main Features</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <FeatureButton icon={<Send className="w-6 h-6" />} label="PaSend" to="/pasend" />
+              <FeatureButton icon={<Smartphone className="w-6 h-6" />} label="PaLoad" to="/paload" />
+              <FeatureButton icon={<Globe className="w-6 h-6" />} label="Remit" to="/remit" />
+              <FeatureButton icon={<Zap className="w-6 h-6" />} label="Pay Bills" to="/pay-bills" />
+            </div>
+          </div>
+
+          {/* Promotions Slider */}
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-4">Special Offers</h3>
+            <Carousel className="w-full max-w-xs mx-auto">
+              <CarouselContent>
+                <CarouselItem>
+                  <PromotionCard
+                    title="PaSend Promo"
+                    description="Send money to anyone and get a chance to win ₱1,000 cashback!"
+                    buttonText="Send Now"
+                    to="/pasend"
+                  />
+                </CarouselItem>
+                <CarouselItem>
+                  <PromotionCard
+                    title="PaLoad Bonus"
+                    description="Get 5% extra load on your next PaLoad transaction!"
+                    buttonText="Load Now"
+                    to="/paload"
+                  />
+                </CarouselItem>
+                <CarouselItem>
+                  <PromotionCard
+                    title="Remit Rewards"
+                    description="Earn double points on international remittances this month!"
+                    buttonText="Learn More"
+                    to="/remit"
+                  />
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          {/* Recent Transactions */}
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-4">Recent Transactions</h3>
+            <TransactionItem
+              title="PaLoad: Mobile Top-up"
+              amount="- ₱100.00"
+              date="Today, 2:30 PM"
+              icon={<Smartphone className="text-[#4B0082] w-6 h-6" />}
+            />
+            <TransactionItem
+              title="Remit: International Transfer"
+              amount="- ₱5,000.00"
+              date="Yesterday, 10:15 AM"
+              icon={<Globe className="text-[#4B0082] w-6 h-6" />}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
