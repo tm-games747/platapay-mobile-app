@@ -1,25 +1,45 @@
 import React, { useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
+import { OrbitControls, Sphere, Text } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CreditCard, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-function RotatingBox() {
-  const meshRef = useRef();
+function Globe() {
+  return (
+    <Sphere args={[1, 64, 64]}>
+      <meshStandardMaterial color="#4B0082" />
+    </Sphere>
+  );
+}
+
+function PesoSymbol({ index }) {
+  const ref = useRef();
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime;
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.5;
-    }
+    const t = state.clock.getElapsedTime() + index;
+    ref.current.position.x = Math.sin(t) * 2;
+    ref.current.position.z = Math.cos(t) * 2;
+    ref.current.position.y = Math.sin(t * 2);
   });
   return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[2, 1, 0.1]} />
-      <meshStandardMaterial color="purple" />
-    </mesh>
+    <Text ref={ref} fontSize={0.5} color="#FFD700">
+      ₱
+    </Text>
+  );
+}
+
+function Scene() {
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <Globe />
+      {[...Array(5)].map((_, index) => (
+        <PesoSymbol key={index} index={index} />
+      ))}
+    </>
   );
 }
 
@@ -57,12 +77,9 @@ export default function LandingPage({ onAuthenticate }) {
     <div className="fixed inset-0 z-50 bg-purple-900 text-white overflow-hidden">
       {/* 3D Background */}
       <div className="absolute inset-0 opacity-50">
-        <Canvas>
+        <Canvas camera={{ position: [0, 0, 5] }}>
           <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-          <RotatingBox />
-          <Environment preset="city" />
+          <Scene />
         </Canvas>
       </div>
 
@@ -142,8 +159,6 @@ export default function LandingPage({ onAuthenticate }) {
               {error && <p className="text-red-500">{error}</p>}
               <Button type="submit" className="w-full">Sign In</Button>
             </form>
-            {/* Additional space for footer */}
-            <div className="h-32"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -182,8 +197,6 @@ export default function LandingPage({ onAuthenticate }) {
               </div>
               <Button className="w-full">Register</Button>
             </form>
-            {/* Additional space for footer */}
-            <div className="h-32"></div>
           </motion.div>
         )}
       </AnimatePresence>
