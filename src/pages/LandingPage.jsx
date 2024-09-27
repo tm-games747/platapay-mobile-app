@@ -37,7 +37,7 @@ export default function LandingPage({ onAuthenticate }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-purple-900 text-white overflow-hidden">
-      {/* New GIF Background */}
+      {/* Globe Background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <img
           src="/Platapayglobe Background Removed.png"
@@ -46,13 +46,22 @@ export default function LandingPage({ onAuthenticate }) {
         />
       </div>
 
-      {/* Rotating Peso */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img
-          src="/Untitled (512 x 512 px) Background Removed.png"
-          alt="Rotating Peso"
-          className="w-32 h-32 animate-spin-slow"
-        />
+      {/* Rotating Peso Symbols */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(5)].map((_, index) => (
+          <img
+            key={index}
+            src="/Untitled (512 x 512 px) Background Removed.png"
+            alt="Rotating Peso"
+            className="absolute w-12 h-12 animate-spin-slow"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${10 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
