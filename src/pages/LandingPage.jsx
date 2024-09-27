@@ -5,6 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+const PesoSymbol = ({ index }) => (
+  <motion.div
+    className="absolute text-white text-2xl font-bold"
+    initial={{ 
+      x: `${Math.random() * 100}vw`, 
+      y: `${Math.random() * 100}vh` 
+    }}
+    animate={{ 
+      x: `${Math.random() * 100}vw`, 
+      y: `${Math.random() * 100}vh` 
+    }}
+    transition={{ 
+      duration: 10 + Math.random() * 20,
+      repeat: Infinity,
+      repeatType: "reverse"
+    }}
+    style={{
+      zIndex: 5
+    }}
+  >
+    ₱
+  </motion.div>
+);
+
 export default function LandingPage({ onAuthenticate }) {
   const [activeDrawer, setActiveDrawer] = useState(null);
   const [username, setUsername] = useState('');
@@ -46,23 +70,10 @@ export default function LandingPage({ onAuthenticate }) {
         />
       </div>
 
-      {/* Rotating Peso Symbols */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(5)].map((_, index) => (
-          <img
-            key={index}
-            src="/Untitled (512 x 512 px) Background Removed.png"
-            alt="Rotating Peso"
-            className="absolute w-12 h-12 animate-spin-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${10 + Math.random() * 5}s`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating Peso Symbols */}
+      {[...Array(20)].map((_, index) => (
+        <PesoSymbol key={index} index={index} />
+      ))}
 
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
