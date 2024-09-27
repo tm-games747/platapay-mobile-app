@@ -64,7 +64,7 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Globe Background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <img
-          src="/Platapayglobe Background Removed.png"
+          src="/images/Platapayglobe Background Removed.png"
           alt="Platapay Globe"
           className="w-full h-full object-contain"
         />
@@ -78,7 +78,7 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <main className="flex-grow flex items-center justify-center p-4">
-          <div className="text-center mt-8">
+          <div className="text-center">
             <h1 className="text-4xl font-bold mb-4 text-white shadow-text">Welcome to PlataPay</h1>
             <p className="text-xl mb-8 text-white shadow-text">Your Fintech Solution for the Future</p>
           </div>
