@@ -95,11 +95,6 @@ export default function LandingPage({ onAuthenticate }) {
 
         <main className="flex-grow flex items-center justify-center p-4">
           <div className="text-center mt-[-10%]">
-            <img
-              src="/logobig Background Removed.png"
-              alt="Platapay Banner"
-              className="w-full max-w-3xl mx-auto mb-8"
-            />
             <h1 className="text-4xl font-bold mb-4">Welcome to PlataPay</h1>
             <p className="text-xl mb-8">Your Fintech Solution for the Future</p>
           </div>
