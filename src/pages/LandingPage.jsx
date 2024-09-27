@@ -1,47 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, Text } from '@react-three/drei';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-function Globe() {
-  return (
-    <Sphere args={[1, 64, 64]}>
-      <meshStandardMaterial color="#4B0082" />
-    </Sphere>
-  );
-}
-
-function PesoSymbol({ index }) {
-  const ref = useRef();
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime() + index;
-    ref.current.position.x = Math.sin(t) * 2;
-    ref.current.position.z = Math.cos(t) * 2;
-    ref.current.position.y = Math.sin(t * 2);
-  });
-  return (
-    <Text ref={ref} fontSize={0.5} color="#FFD700">
-      ₱
-    </Text>
-  );
-}
-
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <Globe />
-      {[...Array(5)].map((_, index) => (
-        <PesoSymbol key={index} index={index} />
-      ))}
-    </>
-  );
-}
 
 export default function LandingPage({ onAuthenticate }) {
   const [activeDrawer, setActiveDrawer] = useState(null);
@@ -75,12 +37,13 @@ export default function LandingPage({ onAuthenticate }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-purple-900 text-white overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-50">
-        <Canvas camera={{ position: [0, 0, 5] }}>
-          <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-          <Scene />
-        </Canvas>
+      {/* New GIF Background */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src="/Platapayglobe Background Removed.png"
+          alt="Platapay Globe"
+          className="w-full h-full object-contain"
+        />
       </div>
 
       {/* Content */}
