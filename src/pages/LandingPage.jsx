@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Text } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CreditCard, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -86,14 +86,14 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <header className="p-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <CreditCard className="h-8 w-8" />
-            <span className="text-2xl font-bold">PlataPay</span>
+          {/* Logo placeholder with 4:1 dimension */}
+          <div className="w-64 h-16 bg-gray-300 flex items-center justify-center text-gray-600">
+            Logo Placeholder (4:1)
           </div>
         </header>
 
         <main className="flex-grow flex items-center justify-center p-4">
-          <div className="text-center">
+          <div className="text-center mt-[-10%]"> {/* Adjusted upwards */}
             <h1 className="text-4xl font-bold mb-4">Welcome to PlataPay</h1>
             <p className="text-xl mb-8">Your Fintech Solution for the Future</p>
           </div>
