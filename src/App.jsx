@@ -13,6 +13,7 @@ import UserLogin from "./pages/UserLogin";
 import TransactionHistory from "./pages/TransactionHistory";
 import HelpSupport from "./pages/HelpSupport";
 import KYCVerification from "./components/KYCVerification";
+import ImageListPage from "./pages/ImageListPage";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => {
                   <Route path="/login" element={<UserLogin />} />
                   <Route path="/help-support" element={<HelpSupport />} />
                   <Route path="/kyc-verification" element={<KYCVerification />} />
+                  <Route path="/image-list" element={<ImageListPage />} />
                 </Routes>
               </main>
               <Footer />
