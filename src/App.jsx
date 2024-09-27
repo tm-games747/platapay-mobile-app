@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -16,27 +17,37 @@ import KYCVerification from "./components/KYCVerification";
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleAuthentication = () => {
+    setIsAuthenticated(true);
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Router>
-          <div className="flex flex-col min-h-screen bg-[#4B0082]">
-            <Header />
-            <main className="flex-1 overflow-y-auto">
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/home" element={<Index />} />
-                <Route path="/qrcode" element={<QRCodeGenerator />} />
-                <Route path="/history" element={<TransactionHistory />} />
-                <Route path="/register" element={<UserRegistration />} />
-                <Route path="/login" element={<UserLogin />} />
-                <Route path="/help-support" element={<HelpSupport />} />
-                <Route path="/kyc-verification" element={<KYCVerification />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+          {!isAuthenticated ? (
+            <LandingPage onAuthenticate={handleAuthentication} />
+          ) : (
+            <div className="flex flex-col min-h-screen bg-[#4B0082]">
+              <Header />
+              <main className="flex-1 overflow-y-auto">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/home" element={<Index />} />
+                  <Route path="/qrcode" element={<QRCodeGenerator />} />
+                  <Route path="/history" element={<TransactionHistory />} />
+                  <Route path="/register" element={<UserRegistration />} />
+                  <Route path="/login" element={<UserLogin />} />
+                  <Route path="/help-support" element={<HelpSupport />} />
+                  <Route path="/kyc-verification" element={<KYCVerification />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          )}
         </Router>
       </TooltipProvider>
     </QueryClientProvider>

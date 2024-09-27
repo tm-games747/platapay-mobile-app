@@ -23,8 +23,11 @@ function RotatingBox() {
   );
 }
 
-export default function LandingPage() {
+export default function LandingPage({ onAuthenticate }) {
   const [activeDrawer, setActiveDrawer] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const drawerVariants = {
     hidden: { y: '100%' },
@@ -33,14 +36,25 @@ export default function LandingPage() {
 
   const handleDrawerOpen = (drawer) => {
     setActiveDrawer(drawer);
+    setError('');
   };
 
   const handleDrawerClose = () => {
     setActiveDrawer(null);
+    setError('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username === 'bossmarc' && password === 'Bossmarc@747') {
+      onAuthenticate();
+    } else {
+      setError('Invalid username or password');
+    }
   };
 
   return (
-    <div className="relative min-h-screen bg-purple-900 text-white overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-purple-900 text-white overflow-hidden">
       {/* 3D Background */}
       <div className="absolute inset-0 opacity-50">
         <Canvas>
@@ -104,16 +118,29 @@ export default function LandingPage() {
               <X size={24} />
             </button>
             <h2 className="text-2xl font-bold mb-4">Sign In to Your Account</h2>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="Enter your email" />
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="Enter your password" />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
               </div>
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">Sign In</Button>
+              {error && <p className="text-red-500">{error}</p>}
+              <Button type="submit" className="w-full">Sign In</Button>
             </form>
             {/* Additional space for footer */}
             <div className="h-32"></div>
@@ -146,14 +173,14 @@ export default function LandingPage() {
                 <Input id="email" type="email" placeholder="Enter your email" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="Create a password" />
+                <Label htmlFor="newPassword">Password</Label>
+                <Input id="newPassword" type="password" placeholder="Create a password" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <Input id="confirmPassword" type="password" placeholder="Confirm your password" />
               </div>
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">Register</Button>
+              <Button className="w-full">Register</Button>
             </form>
             {/* Additional space for footer */}
             <div className="h-32"></div>
