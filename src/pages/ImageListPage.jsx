@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { uploadImage } from '../utils/imageUpload';
 
 const images = [
   { id: 1, title: 'IMG_0744.jpeg', path: '/IMG_0744.jpeg' },
@@ -29,17 +31,34 @@ const images = [
 ];
 
 const ImageListPage = () => {
-  const handleUpload = () => {
-    console.log('Upload button clicked');
-    // In a real implementation, this would trigger a file upload process
+  const [imageList, setImageList] = useState(images);
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    if (file) {
+      try {
+        const uploadedImage = await uploadImage(file);
+        setImageList([...imageList, uploadedImage]);
+        setFile(null);
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+    }
   };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Image List</h1>
-      <Button onClick={handleUpload} className="mb-4">Upload New Image</Button>
+      <div className="mb-4 flex items-center">
+        <Input type="file" onChange={handleFileChange} accept="image/*" className="mr-2" />
+        <Button onClick={handleUpload} disabled={!file}>Upload New Image</Button>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((image) => (
+        {imageList.map((image) => (
           <div key={image.id} className="border rounded p-2">
             <img 
               src={image.path} 
