@@ -87,7 +87,7 @@ export default function LandingPage({ onAuthenticate }) {
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <header className="p-4 flex justify-between items-center">
           <img
-            src="/IMG_1878.jpeg"
+            src="/logobig Background Removed.png"
             alt="Platapay Logo"
             className="h-16 w-auto object-contain"
           />
@@ -96,7 +96,7 @@ export default function LandingPage({ onAuthenticate }) {
         <main className="flex-grow flex items-center justify-center p-4">
           <div className="text-center mt-[-10%]">
             <img
-              src="/Untitled (1200 x 300 px).png"
+              src="/logobig Background Removed.png"
               alt="Platapay Banner"
               className="w-full max-w-3xl mx-auto mb-8"
             />

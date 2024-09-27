@@ -20,7 +20,7 @@ const Header = () => {
         </Sheet>
         <Link to="/" className="h-8 w-32 relative">
           <img
-            src="/IMG_1878.jpeg"
+            src="/logobig Background Removed.png"
             alt="Platapay Logo"
             className="h-full w-auto object-contain"
           />
