@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-[#3B006A] text-white p-4 flex items-center justify-between">
+    <header className="bg-[#3B006A] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
       <div className="flex items-center">
         <button className="mr-4 md:hidden">
           <Menu className="w-6 h-6" />
