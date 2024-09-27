@@ -64,7 +64,7 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Globe Background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <img
-          src="/images/Platapayglobe Background Removed.png"
+          src="blob:https://lov-p-7121d5b0-2ca1-444d-99f6-b1ac05e3a1e9.fly.dev/1f12d03e-00d6-48cc-ac62-81ce0611a7d5"
           alt="Platapay Globe"
           className="w-full h-full object-contain"
         />
