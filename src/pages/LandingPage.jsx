@@ -78,9 +78,9 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <main className="flex-grow flex items-center justify-center p-4">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Welcome to PlataPay</h1>
-            <p className="text-xl mb-8">Your Fintech Solution for the Future</p>
+          <div className="text-center mt-8">
+            <h1 className="text-4xl font-bold mb-4 text-white shadow-text">Welcome to PlataPay</h1>
+            <p className="text-xl mb-8 text-white shadow-text">Your Fintech Solution for the Future</p>
           </div>
         </main>
       </div>
@@ -185,6 +185,12 @@ export default function LandingPage({ onAuthenticate }) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <style jsx>{`
+        .shadow-text {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+      `}</style>
     </div>
   );
 }
