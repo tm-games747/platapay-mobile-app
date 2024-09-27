@@ -1,11 +1,9 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-const LazyImage = lazy(() => import('../components/LazyImage'));
 
 const PesoSymbol = ({ index }) => (
   <motion.div
@@ -65,13 +63,11 @@ export default function LandingPage({ onAuthenticate }) {
     <div className="fixed inset-0 z-50 bg-purple-900 text-white overflow-hidden">
       {/* Globe Background */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <Suspense fallback={<div>Loading...</div>}>
-          <LazyImage
-            src="/images/platapay-globe.png"
-            alt="Platapay Globe"
-            className="w-full h-full object-contain"
-          />
-        </Suspense>
+        <img
+          src="/Platapayglobe Background Removed.png"
+          alt="Platapay Globe"
+          className="w-full h-full object-contain"
+        />
       </div>
 
       {/* Floating Peso Symbols */}
@@ -81,10 +77,18 @@ export default function LandingPage({ onAuthenticate }) {
 
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
+        <header className="p-4 flex justify-between items-center">
+          <img
+            src="/logobig Background Removed.png"
+            alt="Platapay Logo"
+            className="h-16 w-auto object-contain"
+          />
+        </header>
+
         <main className="flex-grow flex items-center justify-center p-4">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 text-white shadow-text">Welcome to PlataPay</h1>
-            <p className="text-xl mb-8 text-white shadow-text">Your Fintech Solution for the Future</p>
+          <div className="text-center mt-[-10%]">
+            <h1 className="text-4xl font-bold mb-4">Welcome to PlataPay</h1>
+            <p className="text-xl mb-8">Your Fintech Solution for the Future</p>
           </div>
         </main>
       </div>
@@ -189,12 +193,6 @@ export default function LandingPage({ onAuthenticate }) {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style jsx>{`
-        .shadow-text {
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-      `}</style>
     </div>
   );
 }
