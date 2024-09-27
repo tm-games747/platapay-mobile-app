@@ -1,10 +1,11 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, QrCode, Wallet, UserPlus, LogIn, History, HelpCircle, UserCheck } from "lucide-react";
+import { Home, QrCode, Wallet as WalletIcon, UserPlus, LogIn, History, HelpCircle, UserCheck } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar";
 import Index from "./pages/Index.jsx";
+import Wallet from "./pages/Wallet.jsx";
 import QRCodeGenerator from "./pages/TodoList.jsx";
 import EWallet from "./pages/EWallet.jsx";
 import UserRegistration from "./pages/UserRegistration.jsx";
@@ -22,14 +23,14 @@ export const navItems = [
     icon: <Home className="h-6 w-6" />,
   },
   {
+    title: "Wallet",
+    to: "/wallet",
+    icon: <WalletIcon className="h-6 w-6" />,
+  },
+  {
     title: "QR Code",
     to: "/qrcode",
     icon: <QrCode className="h-6 w-6" />,
-  },
-  {
-    title: "E-Wallet",
-    to: "/wallet",
-    icon: <Wallet className="h-6 w-6" />,
   },
   {
     title: "Transaction History",
@@ -67,8 +68,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
+              <Route path="wallet" element={<Wallet />} />
               <Route path="qrcode" element={<QRCodeGenerator />} />
-              <Route path="wallet" element={<EWallet />} />
               <Route path="history" element={<TransactionHistory />} />
               <Route path="register" element={<UserRegistration />} />
               <Route path="login" element={<UserLogin />} />
