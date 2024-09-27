@@ -46,6 +46,15 @@ export default function LandingPage({ onAuthenticate }) {
         />
       </div>
 
+      {/* Rotating Peso */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src="/Untitled (512 x 512 px) Background Removed.png"
+          alt="Rotating Peso"
+          className="w-32 h-32 animate-spin-slow"
+        />
+      </div>
+
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <header className="p-4 flex justify-between items-center">
