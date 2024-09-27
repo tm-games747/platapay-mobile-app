@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, Bell } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -20,7 +20,7 @@ const Header = () => {
         </Sheet>
         <Link to="/" className="h-8 w-32 relative">
           <img
-            src="/images/logo.png"
+            src="/IMG_1878.jpeg"
             alt="Platapay Logo"
             className="h-full w-auto object-contain"
           />

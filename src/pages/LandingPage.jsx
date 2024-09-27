@@ -86,14 +86,20 @@ export default function LandingPage({ onAuthenticate }) {
       {/* Content */}
       <div className={`relative z-10 min-h-screen flex flex-col ${activeDrawer ? 'blur-sm' : ''}`}>
         <header className="p-4 flex justify-between items-center">
-          {/* Logo placeholder with 4:1 dimension */}
-          <div className="w-64 h-16 bg-gray-300 flex items-center justify-center text-gray-600">
-            Logo Placeholder (4:1)
-          </div>
+          <img
+            src="/IMG_1878.jpeg"
+            alt="Platapay Logo"
+            className="h-16 w-auto object-contain"
+          />
         </header>
 
         <main className="flex-grow flex items-center justify-center p-4">
-          <div className="text-center mt-[-10%]"> {/* Adjusted upwards */}
+          <div className="text-center mt-[-10%]">
+            <img
+              src="/Untitled (1200 x 300 px).png"
+              alt="Platapay Banner"
+              className="w-full max-w-3xl mx-auto mb-8"
+            />
             <h1 className="text-4xl font-bold mb-4">Welcome to PlataPay</h1>
             <p className="text-xl mb-8">Your Fintech Solution for the Future</p>
           </div>
