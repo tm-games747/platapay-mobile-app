@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Wallet from "./pages/Wallet";
+import Index from "./pages/Index";
 import QRCodeGenerator from "./pages/TodoList";
 import UserRegistration from "./pages/UserRegistration";
 import UserLogin from "./pages/UserLogin";
@@ -24,7 +24,7 @@ const App = () => {
             <Header />
             <main className="flex-1 overflow-y-auto">
               <Routes>
-                <Route path="/" element={<Wallet />} />
+                <Route path="/" element={<Index />} />
                 <Route path="/qrcode" element={<QRCodeGenerator />} />
                 <Route path="/history" element={<TransactionHistory />} />
                 <Route path="/register" element={<UserRegistration />} />
