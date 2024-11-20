@@ -14,6 +14,8 @@ import TransactionHistory from "./pages/TransactionHistory";
 import HelpSupport from "./pages/HelpSupport";
 import KYCVerification from "./components/KYCVerification";
 import ImageListPage from "./pages/ImageListPage";
+import EWallet from "./pages/EWallet";
+import Wallet from "./pages/Wallet";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +47,8 @@ const App = () => {
                   <Route path="/help-support" element={<HelpSupport />} />
                   <Route path="/kyc-verification" element={<KYCVerification />} />
                   <Route path="/image-list" element={<ImageListPage />} />
+                  <Route path="/ewallet" element={<EWallet />} />
+                  <Route path="/wallet" element={<Wallet />} />
                 </Routes>
               </main>
               <Footer />

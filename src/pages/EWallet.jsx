@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Link } from 'react-router-dom';
 
 // Mock API function to fetch balance
 const fetchBalance = async () => {
@@ -163,6 +164,12 @@ const EWallet = () => {
           </Table>
         </CardContent>
       </Card>
+
+      <div className="flex justify-center mt-4">
+        <Link to="/wallet">
+          <Button variant="link">Go to Wallet</Button>
+        </Link>
+      </div>
     </div>
   );
 };

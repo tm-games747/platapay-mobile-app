@@ -171,6 +171,7 @@ const Index = () => {
               <FeatureButton icon={<Smartphone className="w-6 h-6" />} label="PaLoad" to="/paload" />
               <FeatureButton icon={<Globe className="w-6 h-6" />} label="Remit" to="/remit" />
               <FeatureButton icon={<Zap className="w-6 h-6" />} label="Pay Bills" to="/pay-bills" />
+              <FeatureButton icon={<CreditCard className="w-6 h-6" />} label="E-Wallet" to="/ewallet" />
             </div>
           </div>
 
